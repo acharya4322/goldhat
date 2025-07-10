@@ -116,7 +116,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 letterSpacing: '0.03em'
               }}
             >
-              Strategic marketing solutions that deliver 
+              We turn strategy into unstoppable 
               <span 
                 className="bg-gradient-to-r from-amber-500 to-yellow-600 bg-clip-text text-transparent ml-1 sm:ml-2"
                 style={{ 
@@ -125,7 +125,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   textShadow: '0 0 10px rgba(245, 158, 11, 0.3)'
                 }}
               > 
-                measurable results
+                growth.
               </span>
             </p>
 
