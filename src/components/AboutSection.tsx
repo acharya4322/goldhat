@@ -235,7 +235,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
                       textShadow: '0 0 15px rgba(245, 158, 11, 0.4) sm:0 0 20px rgba(245, 158, 11, 0.4)'
                     }}
                   >
-                    2024
+                    2025
                   </div>
                   <div 
                     className={`font-bold text-xs xs:text-sm sm:text-base ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
