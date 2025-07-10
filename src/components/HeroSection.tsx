@@ -208,7 +208,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                     textShadow: '0 0 15px rgba(245, 158, 11, 0.4)'
                   }}
                 >
-                  2024
+                  2025
                 </div>
                 <div 
                   className={`text-xs sm:text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'} uppercase tracking-wider`}
