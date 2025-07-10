@@ -150,7 +150,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ darkMode = true }) => {
               {[
                 { icon: Mail, label: 'Email', value: 'goldhatindia@gmail.com', link: 'mailto:goldhatindia@gmail.com' },
                 { icon: Phone, label: 'Phone', value: '+91 (555) GOLD-HAT', link: 'tel:+915555555555' },
-                { icon: MapPin, label: 'Office', value: 'Patna, Bihar, India', link: null }
+                { icon: MapPin, label: 'Office', value: 'DELHI NCR', link: null }
               ].map((item, index) => (
                 <div key={index} className="flex items-center space-x-3 sm:space-x-4 group">
                   <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 p-3 sm:p-4 rounded-xl flex-shrink-0">
