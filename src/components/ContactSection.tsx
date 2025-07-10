@@ -13,7 +13,9 @@ import {
   Sparkles,
   Send,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  Copy,
+  ExternalLink
 } from 'lucide-react';
 
 type ContactSectionProps = {
@@ -31,6 +33,8 @@ const ContactSection: React.FC<ContactSectionProps> = ({ darkMode = true }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [showFormattedMessage, setShowFormattedMessage] = useState(false);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -38,6 +42,16 @@ const ContactSection: React.FC<ContactSectionProps> = ({ darkMode = true }) => {
       ...prev,
       [name]: value
     }));
+  };
+
+  const copyToClipboard = async (text: string, field: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedField(field);
+      setTimeout(() => setCopiedField(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
   };
 
   const handleSubmit = async () => {
@@ -50,40 +64,9 @@ const ContactSection: React.FC<ContactSectionProps> = ({ darkMode = true }) => {
     setSubmitStatus('idle');
 
     try {
-      // Create the email body
-      const emailBody = `
-New Contact Form Submission from Gold Hat Agency Website:
-
-Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Company: ${formData.company}
-Primary Goal: ${formData.goal}
-Vision: ${formData.vision}
-
-Submitted at: ${new Date().toLocaleString()}
-      `;
-
-      // Create mailto link
-      const mailtoLink = `mailto:goldhatindia@gmail.com?subject=New Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
-      
-      // Open email client
-      window.location.href = mailtoLink;
-      
-      // Show success message
+      // Show the formatted message instead of trying to send
+      setShowFormattedMessage(true);
       setSubmitStatus('success');
-      
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          company: '',
-          goal: '',
-          vision: ''
-        });
-        setSubmitStatus('idle');
-      }, 3000);
       
     } catch (error) {
       console.error('Error:', error);
@@ -92,6 +75,37 @@ Submitted at: ${new Date().toLocaleString()}
       setIsSubmitting(false);
     }
   };
+
+  const resetForm = () => {
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      company: '',
+      goal: '',
+      vision: ''
+    });
+    setSubmitStatus('idle');
+    setShowFormattedMessage(false);
+  };
+
+  const formattedMessage = `
+Subject: New Contact Form Submission - ${formData.firstName} ${formData.lastName}
+
+Hi Gold Hat Agency,
+
+I'd like to discuss working together on my marketing goals.
+
+Name: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Company: ${formData.company}
+Primary Goal: ${formData.goal}
+
+Vision: ${formData.vision}
+
+Best regards,
+${formData.firstName}
+  `.trim();
 
   return (
     <section
@@ -135,22 +149,35 @@ Submitted at: ${new Date().toLocaleString()}
                 { icon: Phone, label: 'Phone', value: '+91 (555) GOLD-HAT', link: 'tel:+915555555555' },
                 { icon: MapPin, label: 'Office', value: 'Patna, Bihar, India', link: null }
               ].map((item, index) => (
-                <div key={index} className="flex items-center space-x-3 sm:space-x-4">
+                <div key={index} className="flex items-center space-x-3 sm:space-x-4 group">
                   <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 p-3 sm:p-4 rounded-xl flex-shrink-0">
                     <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-black" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <div className="font-bold text-base sm:text-lg">{item.label}</div>
-                    {item.link ? (
-                      <a 
-                        href={item.link} 
-                        className="text-gray-300 text-sm sm:text-base break-all hover:text-yellow-500 transition-colors duration-300"
+                    <div className="flex items-center space-x-2">
+                      {item.link ? (
+                        <a 
+                          href={item.link} 
+                          className="text-gray-300 text-sm sm:text-base break-all hover:text-yellow-500 transition-colors duration-300"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <div className="text-gray-300 text-sm sm:text-base break-all">{item.value}</div>
+                      )}
+                      <button
+                        onClick={() => copyToClipboard(item.value, item.label)}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-1 hover:bg-yellow-500/20 rounded"
+                        title="Copy to clipboard"
                       >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <div className="text-gray-300 text-sm sm:text-base break-all">{item.value}</div>
-                    )}
+                        {copiedField === item.label ? (
+                          <CheckCircle className="w-4 h-4 text-green-500" />
+                        ) : (
+                          <Copy className="w-4 h-4 text-gray-400 hover:text-yellow-500" />
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -189,126 +216,174 @@ Submitted at: ${new Date().toLocaleString()}
               <p className="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">
                 Get a personalized 30-minute consultation where we'll analyze your current marketing and show you exactly how to achieve golden results.
               </p>
-              <button 
-                onClick={() => window.open('mailto:goldhatindia@gmail.com?subject=Free Strategy Call Request&body=Hi, I would like to schedule a free 30-minute strategy call to discuss my marketing goals.', '_blank')}
-                className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+              <a 
+                href="mailto:goldhatindia@gmail.com?subject=Free Strategy Call Request&body=Hi, I would like to schedule a free 30-minute strategy call to discuss my marketing goals."
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm sm:text-base"
               >
-                Schedule Now
-              </button>
+                <span>Schedule Now</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
           {/* Right Column - Contact Form */}
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10">
-            <div className="space-y-4 sm:space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                {[
-                  { label: 'First Name', name: 'firstName', placeholder: 'John' },
-                  { label: 'Last Name', name: 'lastName', placeholder: 'Doe' }
-                ].map((field, idx) => (
-                  <div key={idx}>
-                    <label className="block text-sm font-bold mb-2 text-yellow-500">{field.label}</label>
-                    <input
-                      type="text"
-                      name={field.name}
-                      value={formData[field.name as keyof typeof formData]}
-                      onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-gray-400 transition-all duration-300 text-sm sm:text-base"
-                      placeholder={field.placeholder}
-                    />
-                  </div>
-                ))}
-              </div>
-              
-              <div>
-                <label className="block text-sm font-bold mb-2 text-yellow-500">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-gray-400 transition-all duration-300 text-sm sm:text-base"
-                  placeholder="john@company.com"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-bold mb-2 text-yellow-500">Company</label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-gray-400 transition-all duration-300 text-sm sm:text-base"
-                  placeholder="Your Amazing Company"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-bold mb-2 text-yellow-500">What's Your Goal?</label>
-                <select 
-                  name="goal"
-                  value={formData.goal}
-                  onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-yellow-500 text-white transition-all duration-300 text-sm sm:text-base"
-                >
-                  <option value="" className="bg-gray-800">Select your primary goal</option>
-                  <option value="Increase Brand Awareness" className="bg-gray-800">Increase Brand Awareness</option>
-                  <option value="Generate More Leads" className="bg-gray-800">Generate More Leads</option>
-                  <option value="Grow Social Media" className="bg-gray-800">Grow Social Media</option>
-                  <option value="Boost Sales" className="bg-gray-800">Boost Sales</option>
-                  <option value="Web Development" className="bg-gray-800">Web Development</option>
-                  <option value="App Development" className="bg-gray-800">App Development</option>
-                  <option value="Other" className="bg-gray-800">Other</option>
-                </select>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-bold mb-2 text-yellow-500">Tell Us About Your Vision</label>
-                <textarea
-                  name="vision"
-                  value={formData.vision}
-                  onChange={handleInputChange}
-                  rows={4}
-                  className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-gray-400 resize-none transition-all duration-300 text-sm sm:text-base"
-                  placeholder="Describe your dream outcome. What would success look like for your brand?"
-                ></textarea>
-              </div>
+            {!showFormattedMessage ? (
+              <div className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  {[
+                    { label: 'First Name', name: 'firstName', placeholder: 'John' },
+                    { label: 'Last Name', name: 'lastName', placeholder: 'Doe' }
+                  ].map((field, idx) => (
+                    <div key={idx}>
+                      <label className="block text-sm font-bold mb-2 text-yellow-500">{field.label}</label>
+                      <input
+                        type="text"
+                        name={field.name}
+                        value={formData[field.name as keyof typeof formData]}
+                        onChange={handleInputChange}
+                        className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-gray-400 transition-all duration-300 text-sm sm:text-base"
+                        placeholder={field.placeholder}
+                      />
+                    </div>
+                  ))}
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-yellow-500">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-gray-400 transition-all duration-300 text-sm sm:text-base"
+                    placeholder="john@company.com"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-yellow-500">Company</label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-gray-400 transition-all duration-300 text-sm sm:text-base"
+                    placeholder="Your Amazing Company"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-yellow-500">What's Your Goal?</label>
+                  <select 
+                    name="goal"
+                    value={formData.goal}
+                    onChange={handleInputChange}
+                    className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-yellow-500 text-white transition-all duration-300 text-sm sm:text-base"
+                  >
+                    <option value="" className="bg-gray-800">Select your primary goal</option>
+                    <option value="Increase Brand Awareness" className="bg-gray-800">Increase Brand Awareness</option>
+                    <option value="Generate More Leads" className="bg-gray-800">Generate More Leads</option>
+                    <option value="Grow Social Media" className="bg-gray-800">Grow Social Media</option>
+                    <option value="Boost Sales" className="bg-gray-800">Boost Sales</option>
+                    <option value="Web Development" className="bg-gray-800">Web Development</option>
+                    <option value="App Development" className="bg-gray-800">App Development</option>
+                    <option value="Other" className="bg-gray-800">Other</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-yellow-500">Tell Us About Your Vision</label>
+                  <textarea
+                    name="vision"
+                    value={formData.vision}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-gray-400 resize-none transition-all duration-300 text-sm sm:text-base"
+                    placeholder="Describe your dream outcome. What would success look like for your brand?"
+                  ></textarea>
+                </div>
 
-              {/* Status Messages */}
-              {submitStatus === 'success' && (
-                <div className="flex items-center space-x-2 bg-green-500/20 border border-green-500/30 rounded-xl p-3 sm:p-4">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span className="text-green-400 text-sm sm:text-base">Message sent successfully! We'll get back to you soon.</span>
-                </div>
-              )}
-              
-              {submitStatus === 'error' && (
-                <div className="flex items-center space-x-2 bg-red-500/20 border border-red-500/30 rounded-xl p-3 sm:p-4">
-                  <AlertCircle className="w-5 h-5 text-red-500" />
-                  <span className="text-red-400 text-sm sm:text-base">Please fill in all required fields or try emailing us directly.</span>
-                </div>
-              )}
-              
-              <button
-                onClick={handleSubmit}
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 sm:space-x-3 group disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-black"></div>
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" />
-                    <span>Start My Golden Journey</span>
-                    <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-spin" />
-                  </>
+                {/* Status Messages */}
+                {submitStatus === 'error' && (
+                  <div className="flex items-center space-x-2 bg-red-500/20 border border-red-500/30 rounded-xl p-3 sm:p-4">
+                    <AlertCircle className="w-5 h-5 text-red-500" />
+                    <span className="text-red-400 text-sm sm:text-base">Please fill in all required fields.</span>
+                  </div>
                 )}
-              </button>
-            </div>
+                
+                <button
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 sm:space-x-3 group disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-black"></div>
+                      <span>Processing...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" />
+                      <span>Prepare My Message</span>
+                      <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-spin" />
+                    </>
+                  )}
+                </button>
+              </div>
+            ) : (
+              <div className="space-y-6">
+                <div className="flex items-center space-x-2 bg-green-500/20 border border-green-500/30 rounded-xl p-4">
+                  <CheckCircle className="w-6 h-6 text-green-500" />
+                  <div>
+                    <h4 className="font-bold text-green-400">Message Ready!</h4>
+                    <p className="text-green-400 text-sm">Copy the message below and send it to us via email.</p>
+                  </div>
+                </div>
+
+                <div className="bg-white/10 border border-white/20 rounded-xl p-4 relative">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-bold text-yellow-500">Your Message:</h4>
+                    <button
+                      onClick={() => copyToClipboard(formattedMessage, 'message')}
+                      className="flex items-center space-x-2 bg-yellow-500/20 hover:bg-yellow-500/30 px-3 py-2 rounded-lg transition-colors duration-300"
+                    >
+                      {copiedField === 'message' ? (
+                        <>
+                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          <span className="text-green-400 text-sm">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-4 h-4 text-yellow-500" />
+                          <span className="text-yellow-500 text-sm">Copy</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  <pre className="text-sm text-gray-300 whitespace-pre-wrap overflow-x-auto">
+                    {formattedMessage}
+                  </pre>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href={`mailto:goldhatindia@gmail.com?subject=${encodeURIComponent(`New Contact Form Submission - ${formData.firstName} ${formData.lastName}`)}&body=${encodeURIComponent(formattedMessage)}`}
+                    className="flex-1 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-3 rounded-xl font-bold text-center hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+                  >
+                    <Mail className="w-5 h-5" />
+                    <span>Send via Email</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                  <button
+                    onClick={resetForm}
+                    className="flex-1 bg-white/10 border border-white/20 text-white py-3 rounded-xl font-bold hover:bg-white/20 transition-all duration-300"
+                  >
+                    Send Another Message
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
