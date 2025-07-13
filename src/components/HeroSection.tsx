@@ -369,7 +369,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
 
             {/* Enhanced Mobile Layout */}
             <div className="md:hidden text-center px-4 py-8 flex flex-col justify-center items-center min-h-screen">
-              <div className="mb-8 space-y-2">
+              <div className="mb-24 space-y-2">
                 <h1 className="text-6xl sm:text-7xl leading-none font-black tracking-tight">
                   <span 
                     className="block text-white"
