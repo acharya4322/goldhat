@@ -14,9 +14,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
   const [currentText, setCurrentText] = useState(0);
 
   const textRotation = [
-    "TRANSFORM",
-    "ELEVATE", 
-    "AMPLIFY"
+    "Transform",
+    "Elevate", 
+    "Amplify"
   ];
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
       
       <section
         id="home"
-        className="min-h-screen flex items-center justify-center relative overflow-hidden"
+        className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20"
         style={{
           background: '#0a0a0a'
         }}
@@ -67,166 +67,166 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           />
         </div>
 
-        {/* Main Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        {/* Small CTA button positioned at bottom left */}
+        <div className="absolute bottom-6 left-6 z-20">
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="group bg-transparent border-2 border-white text-white px-3 py-2 sm:px-4 sm:py-2 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 hover:bg-white hover:text-black relative overflow-hidden"
+            style={{
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontWeight: '600',
+              fontSize: '0.75rem',
+              letterSpacing: '0.05em'
+            }}
+          >
+            <div className="flex items-center justify-center space-x-1 relative z-10">
+              <span>START</span>
+              <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+            </div>
+          </button>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 text-center">
           <div 
             className={`transition-all duration-1000 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            {/* Main Headlines */}
-            <div className="text-left max-w-5xl">
-              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-none mb-4 sm:mb-6">
-                <span 
-                  className="block text-white font-black tracking-tight"
-                  style={{ 
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: '900',
-                    letterSpacing: '-0.02em'
-                  }}
-                >
-                  DESIGN
-                </span>
-                <span 
-                  className="block text-white font-black tracking-tight"
-                  style={{ 
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: '900',
-                    letterSpacing: '-0.02em'
-                  }}
-                >
-                  DEVELOP
-                </span>
-                
-                {/* Highlighted word with background */}
-                <div className="relative inline-block">
-                  <span 
-                    className="block text-white font-black tracking-tight bg-gradient-to-r from-orange-500 to-red-500 px-4 sm:px-8 py-2 sm:py-4 transform -rotate-2 relative z-10"
-                    style={{ 
-                      fontFamily: 'Inter, sans-serif',
-                      fontWeight: '900',
-                      letterSpacing: '-0.02em'
-                    }}
-                  >
-                    {textRotation[currentText]}
-                  </span>
-                </div>
-              </h1>
-
-              {/* Subtitle */}
-              <div className="max-w-2xl mb-8 sm:mb-12">
-                <p 
-                  className="text-gray-300 text-lg sm:text-xl md:text-2xl leading-relaxed mb-4"
-                  style={{
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '400'
-                  }}
-                >
-                  No fluff, no jargon, just clean, elegant code and designs that pop.
-                </p>
-                <p 
-                  className="text-gray-400 text-lg sm:text-xl md:text-2xl leading-relaxed"
-                  style={{
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '400'
-                  }}
-                >
-                  Get your own <span className="text-orange-500 font-semibold">custom digital solution</span> right now!
-                </p>
-              </div>
-
-              {/* CTA Button */}
-              <div className="mb-12 sm:mb-16">
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="group bg-transparent border-2 border-white text-white px-8 py-4 sm:px-10 sm:py-5 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 hover:bg-white hover:text-black relative overflow-hidden"
-                  style={{
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '600',
-                    fontSize: '1.1rem',
-                    letterSpacing: '0.05em'
-                  }}
-                >
-                  <div className="flex items-center justify-center space-x-3 relative z-10">
-                    <span>BOOK A CALL</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Right Stats */}
-        <div className="absolute bottom-8 right-8 text-right">
-          <div className="mb-6">
-            <div className="text-right mb-2">
+            {/* Main Headline with Mobile-Responsive Typography */}
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-6 sm:mb-8 leading-tight text-center">
               <span 
-                className="text-white text-sm sm:text-base tracking-wider"
-                style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '400'
+                className="block text-white tracking-tight font-black"
+                style={{ 
+                  fontFamily: 'Inter, sans-serif',
+                  fontWeight: '900',
+                  letterSpacing: '-0.02em'
                 }}
               >
-                You <span className="text-orange-500 font-semibold">think</span> it, we <span className="text-red-500 font-semibold">ship</span> it
+                We Don't Just
               </span>
-            </div>
-          </div>
-          
-          <div className="space-y-4">
-            <div className="text-right">
-              <div 
-                className="text-white text-4xl sm:text-5xl md:text-6xl font-black"
-                style={{
+              
+              {/* Highlighted rotating word with background */}
+              <div className="relative inline-block my-3 sm:my-4 md:my-6">
+                <span 
+                  className="block text-white font-black tracking-tight bg-gradient-to-r from-orange-500 to-red-500 px-4 sm:px-8 py-2 sm:py-4 transform -rotate-2 relative z-10 hover:scale-105 transition-transform duration-500"
+                  style={{ 
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: '900',
+                    letterSpacing: '-0.02em'
+                  }}
+                >
+                  {textRotation[currentText]}
+                </span>
+              </div>
+              
+              <span 
+                className="block text-white tracking-tight font-black"
+                style={{ 
                   fontFamily: 'Inter, sans-serif',
-                  fontWeight: '900'
+                  fontWeight: '900',
+                  letterSpacing: '-0.02em'
                 }}
               >
-                22<span className="text-orange-500">+</span>
-              </div>
-              <div 
-                className="text-gray-400 text-sm sm:text-base tracking-wider"
-                style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '400'
-                }}
-              >
-                IDEAS SHIPPED
-              </div>
-            </div>
-            
-            <div className="text-right">
-              <div 
-                className="text-white text-4xl sm:text-5xl md:text-6xl font-black"
-                style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontWeight: '900'
-                }}
-              >
-                48<span className="text-orange-500">+</span>
-              </div>
-              <div 
-                className="text-gray-400 text-sm sm:text-base tracking-wider"
-                style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '400'
-                }}
-              >
-                DESIGNS SHIPPED
-              </div>
-            </div>
-          </div>
-        </div>
+                Your Brand
+              </span>
+            </h1>
 
-        {/* Enhanced scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div 
-            className="cursor-pointer group" 
-            onClick={() => scrollToSection('about')}
-          >
-            <ChevronDown 
-              className="w-8 h-8 text-gray-400 group-hover:text-white transition-all duration-300 group-hover:scale-125 animate-bounce"
-            />
+            {/* Enhanced subtitle */}
+            <p 
+              className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2 sm:px-0"
+              style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontWeight: '400'
+              }}
+            >
+              We turn strategy into unstoppable 
+              <span 
+                className="text-orange-500 font-semibold ml-1 sm:ml-2"
+                style={{ 
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontWeight: '600'
+                }}
+              > 
+                growth.
+              </span>
+            </p>
+
+            {/* Enhanced stats */}
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto">
+              <div className="text-center group cursor-default">
+                <div 
+                  className="text-2xl sm:text-3xl md:text-4xl text-white mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300"
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: '900'
+                  }}
+                >
+                  5<span className="text-orange-500">+</span>
+                </div>
+                <div 
+                  className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
+                  style={{
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontWeight: '400',
+                    letterSpacing: '0.1em'
+                  }}
+                >
+                  Projects
+                </div>
+              </div>
+              <div className="text-center group cursor-default">
+                <div 
+                  className="text-2xl sm:text-3xl md:text-4xl text-white mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300"
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: '900'
+                  }}
+                >
+                  100<span className="text-orange-500">%</span>
+                </div>
+                <div 
+                  className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
+                  style={{
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontWeight: '400',
+                    letterSpacing: '0.1em'
+                  }}
+                >
+                  Satisfaction
+                </div>
+              </div>
+              <div className="text-center group cursor-default">
+                <div 
+                  className="text-2xl sm:text-3xl md:text-4xl text-white mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300"
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: '900'
+                  }}
+                >
+                  2025
+                </div>
+                <div 
+                  className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
+                  style={{
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontWeight: '400',
+                    letterSpacing: '0.1em'
+                  }}
+                >
+                  Founded
+                </div>
+              </div>
+            </div>
+
+            {/* Enhanced scroll indicator */}
+            <div 
+              className="cursor-pointer group inline-block" 
+              onClick={() => scrollToSection('about')}
+            >
+              <ChevronDown 
+                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-gray-400 group-hover:text-white transition-all duration-300 group-hover:scale-125 animate-bounce"
+              />
+            </div>
           </div>
         </div>
 
