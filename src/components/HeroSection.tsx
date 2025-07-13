@@ -386,7 +386,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
             <div className="md:hidden text-center px-4 flex flex-col justify-center min-h-screen">
               {/* Main Content Section - Always Visible */}
               <div className="flex flex-col justify-center py-8">
-                <div className="mb-8 space-y-3">
+                <div className="mb-8 space-y-1">
                   <h1 className="text-4xl sm:text-5xl leading-none font-black tracking-tight">
                     <span 
                       className="block text-white mb-2"
