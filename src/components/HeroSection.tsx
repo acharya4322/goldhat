@@ -382,7 +382,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
               </div>
             </div>
 
-            {/* Mobile Layout - First Impression Only */}
+            {/* Mobile Layout - Modified */}
             <div className="md:hidden text-center px-4 flex flex-col justify-center min-h-screen">
               {/* Main Content Section - Always Visible */}
               <div className="flex flex-col justify-center py-8">
@@ -432,9 +432,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                     </span>
                   </h1>
 
-                  {/* Enhanced Mobile subtitle */}
+                  {/* Modified Mobile subtitle - Much smaller font */}
                   <p 
-                    className="text-base sm:text-lg leading-relaxed max-w-sm mx-auto opacity-90 text-center mt-6"
+                    className="text-xs leading-tight max-w-xs mx-auto opacity-90 text-center mt-6"
                     style={{
                       fontFamily: 'Space Grotesk, sans-serif',
                       fontWeight: '400',
@@ -454,7 +454,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                     >
                       growth.
                       <div className="absolute -top-1 -right-1 text-yellow-400 animate-pulse">
-                        <Sparkles className="w-3 h-3" />
+                        <Sparkles className="w-2 h-2" />
                       </div>
                     </span>
                   </p>
@@ -468,36 +468,36 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 }`}
               >
                 <div className="space-y-6">
-                  {/* Mobile START TRANSFORMATION Button - Reduced Size */}
+                  {/* Mobile START TRANSFORMATION Button - Half Size */}
                   <div className="flex justify-center">
                     <button
                       onClick={() => scrollToSection('contact')}
-                      className="group relative bg-transparent border-2 text-white px-4 py-2 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
+                      className="group relative bg-transparent border-2 text-white px-2 py-1 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
                       style={{
                         fontFamily: 'Space Grotesk, sans-serif',
                         fontWeight: '600',
-                        fontSize: '0.7rem',
-                        letterSpacing: '0.03em',
+                        fontSize: '0.6rem',
+                        letterSpacing: '0.02em',
                         borderColor: '#D4AF37',
-                        boxShadow: '0 0 15px rgba(212, 175, 55, 0.2)'
+                        boxShadow: '0 0 10px rgba(212, 175, 55, 0.2)'
                       }}
                       onTouchStart={(e) => {
                         e.currentTarget.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
                         e.currentTarget.style.color = '#0a0a0a';
-                        e.currentTarget.style.boxShadow = '0 0 25px rgba(212, 175, 55, 0.5)';
+                        e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.5)';
                       }}
                       onTouchEnd={(e) => {
                         setTimeout(() => {
                           e.currentTarget.style.background = 'transparent';
                           e.currentTarget.style.color = '#ffffff';
-                          e.currentTarget.style.boxShadow = '0 0 15px rgba(212, 175, 55, 0.2)';
+                          e.currentTarget.style.boxShadow = '0 0 10px rgba(212, 175, 55, 0.2)';
                         }, 100);
                       }}
                     >
-                      <div className="flex items-center justify-center space-x-1.5 relative z-10">
-                        <Sparkles className="w-3 h-3" />
+                      <div className="flex items-center justify-center space-x-1 relative z-10">
+                        <Sparkles className="w-2.5 h-2.5" />
                         <span>START TRANSFORMATION</span>
-                        <ArrowRight className="w-3 h-3" />
+                        <ArrowRight className="w-2.5 h-2.5" />
                       </div>
                     </button>
                   </div>
@@ -577,24 +577,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                     </div>
                   </div>
 
-                  {/* Mobile Scroll Arrow */}
-                  <div className="flex justify-center">
-                    <div 
-                      className="cursor-pointer group inline-block relative" 
-                      onClick={() => scrollToSection('about')}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-lg opacity-20 group-active:opacity-40 transition-opacity duration-300" />
-                      <div className="relative bg-black/20 backdrop-blur-sm rounded-full p-2 border border-yellow-400/30 group-active:border-yellow-400/60 transition-all duration-300">
-                        <ChevronDown 
-                          className="w-5 h-5 transition-all duration-300 group-active:scale-125 animate-bounce"
-                          style={{ 
-                            color: '#B8860B',
-                            filter: 'drop-shadow(0 0 8px rgba(212, 175, 55, 0.5))'
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  {/* Mobile Scroll Arrow - REMOVED */}
                 </div>
               </div>
             </div>
