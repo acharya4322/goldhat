@@ -392,9 +392,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                       className="block text-white mb-2"
                       style={{ 
                         fontFamily: 'Inter, sans-serif',
-                        fontWeight: '1200',
+                        fontWeight: '900',
                         letterSpacing: '-0.03em',
-                        textShadow: '0 0 30px rgba(255, 255, 255, 0.1)'
+                        textShadow: '0 0 30px rgba(255, 255, 255, 0.1)',
+                        fontSize: '3.6rem',
                       }}
                     >
                       WE DON'T JUST
