@@ -92,7 +92,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
             </h2>
             
             <p 
-              className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'} max-w-2xl mx-auto mb-8`}
+              className={`text-base ${darkMode ? 'text-gray-300' : 'text-gray-600'} max-w-2xl mx-auto mb-6`}
               style={{ fontFamily: 'Rubik, sans-serif' }}
             >
               Digital alchemists transforming brands into{' '}
