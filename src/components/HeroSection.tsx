@@ -259,17 +259,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           </div>
         </div>
 
-        {/* Mobile Bottom Elements - NEW */}
+        {/* Mobile Bottom Elements - ROW LAYOUT */}
         <div className="absolute bottom-6 left-4 right-4 z-20 md:hidden">
-          <div className="flex justify-between items-end">
+          <div className="flex items-center justify-between">
             {/* Mobile START TRANSFORMATION Button */}
             <button
               onClick={() => scrollToSection('contact')}
-              className="group relative bg-transparent border-2 text-white px-5 py-3 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden flex-shrink-0"
+              className="group relative bg-transparent border-2 text-white px-4 py-2.5 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden flex-shrink-0"
               style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontWeight: '600',
-                fontSize: '0.8rem',
+                fontSize: '0.75rem',
                 letterSpacing: '0.05em',
                 borderColor: '#D4AF37',
                 boxShadow: '0 0 20px rgba(212, 175, 55, 0.2)'
@@ -287,18 +287,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 }, 100);
               }}
             >
-              <div className="flex items-center justify-center space-x-2 relative z-10">
-                <Sparkles className="w-3.5 h-3.5" />
+              <div className="flex items-center justify-center space-x-1.5 relative z-10">
+                <Sparkles className="w-3 h-3" />
                 <span>START</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3 h-3" />
               </div>
             </button>
 
-            {/* Mobile Stats - Horizontal Layout */}
-            <div className="flex space-x-3 text-center">
-              <div className="text-center group cursor-pointer min-w-0">
+            {/* Mobile Stats - Compact Row */}
+            <div className="flex items-center space-x-4">
+              <div className="text-center group cursor-pointer">
                 <div 
-                  className="text-white text-xl font-black transition-all duration-300 group-active:scale-110 leading-tight"
+                  className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
                   style={{
                     fontFamily: 'Orbitron, sans-serif',
                     fontWeight: '900',
@@ -320,9 +320,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 </div>
               </div>
               
-              <div className="text-center group cursor-pointer min-w-0">
+              <div className="text-center group cursor-pointer">
                 <div 
-                  className="text-white text-xl font-black transition-all duration-300 group-active:scale-110 leading-tight"
+                  className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
                   style={{
                     fontFamily: 'Orbitron, sans-serif',
                     fontWeight: '900',
@@ -344,9 +344,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 </div>
               </div>
               
-              <div className="text-center group cursor-pointer min-w-0">
+              <div className="text-center group cursor-pointer">
                 <div 
-                  className="text-white text-xl font-black transition-all duration-300 group-active:scale-110 leading-tight"
+                  className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
                   style={{
                     fontFamily: 'Orbitron, sans-serif',
                     fontWeight: '900',
@@ -366,6 +366,23 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 >
                   Founded
                 </div>
+              </div>
+            </div>
+
+            {/* Mobile Scroll Arrow */}
+            <div 
+              className="cursor-pointer group inline-block relative flex-shrink-0" 
+              onClick={() => scrollToSection('about')}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-lg opacity-20 group-active:opacity-40 transition-opacity duration-300" />
+              <div className="relative bg-black/20 backdrop-blur-sm rounded-full p-2 border border-yellow-400/30 group-active:border-yellow-400/60 transition-all duration-300">
+                <ChevronDown 
+                  className="w-5 h-5 transition-all duration-300 group-active:scale-125 animate-bounce"
+                  style={{ 
+                    color: '#B8860B',
+                    filter: 'drop-shadow(0 0 8px rgba(212, 175, 55, 0.5))'
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -482,7 +499,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
             {/* Enhanced Mobile Layout */}
             <div className="md:hidden text-center px-4 py-8 flex flex-col justify-center items-center" style={{ minHeight: 'calc(100vh - 120px)' }}>
               <div className="mb-8 space-y-2">
-                <h1 className="text-6xl sm:text-7xl leading-none font-black tracking-tight">
+                <h1 className="text-5xl sm:text-6xl leading-none font-black tracking-tight">
                   <span 
                     className="block text-white"
                     style={{ 
@@ -511,14 +528,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   <div className="relative inline-block transform -rotate-3 mt-2">
                     <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg blur-xl opacity-30 animate-pulse" />
                     <span 
-                      className="block text-black font-black tracking-tight px-6 py-3 relative z-10"
+                      className="block text-black font-black tracking-tight px-4 py-2 relative z-10"
                       style={{ 
                         fontFamily: 'Inter, sans-serif',
                         fontWeight: '900',
                         letterSpacing: '-0.03em',
                         background: 'linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%)',
                         boxShadow: '0 8px 32px rgba(212, 175, 55, 0.4), 0 0 40px rgba(255, 215, 0, 0.3)',
-                        fontSize: '3.5rem',
+                        fontSize: '3rem',
                         textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
                       }}
                     >
@@ -542,7 +559,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
 
               {/* Enhanced Mobile subtitle */}
               <p 
-                className="text-lg sm:text-xl leading-relaxed max-w-md mx-auto opacity-90 text-center mb-12"
+                className="text-base sm:text-lg leading-relaxed max-w-sm mx-auto opacity-90 text-center mb-12"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
@@ -563,23 +580,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   growth.
                 </span>
               </p>
-
-              {/* Mobile scroll indicator */}
-              <div 
-                className="cursor-pointer group inline-block relative" 
-                onClick={() => scrollToSection('about')}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-lg opacity-20 group-active:opacity-40 transition-opacity duration-300" />
-                <div className="relative bg-black/20 backdrop-blur-sm rounded-full p-2 border border-yellow-400/30 group-active:border-yellow-400/60 transition-all duration-300">
-                  <ChevronDown 
-                    className="w-6 h-6 transition-all duration-300 group-active:scale-125 animate-bounce"
-                    style={{ 
-                      color: '#B8860B',
-                      filter: 'drop-shadow(0 0 8px rgba(212, 175, 55, 0.5))'
-                    }}
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </div>
