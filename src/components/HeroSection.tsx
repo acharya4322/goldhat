@@ -70,24 +70,24 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           />
         </div>
 
-        {/* Mobile Background Elements - Visible only on Mobile */}
+        {/* Mobile Background Elements - Updated to Gold Colors */}
         <div className="absolute inset-0 md:hidden">
-          {/* Gradient orbs for mobile */}
+          {/* Gradient orbs for mobile - Now using gold colors */}
           <div className="absolute top-20 left-0 w-64 h-64 rounded-full opacity-30 blur-3xl"
                style={{
-                 background: 'radial-gradient(circle, rgba(255, 69, 0, 0.4), transparent)',
+                 background: 'radial-gradient(circle, rgba(212, 175, 55, 0.4), transparent)',
                  animation: 'pulse 4s ease-in-out infinite'
                }}
           />
           <div className="absolute bottom-32 right-0 w-48 h-48 rounded-full opacity-40 blur-2xl"
                style={{
-                 background: 'radial-gradient(circle, rgba(212, 175, 55, 0.5), transparent)',
+                 background: 'radial-gradient(circle, rgba(255, 215, 0, 0.5), transparent)',
                  animation: 'pulse 3s ease-in-out infinite reverse'
                }}
           />
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full opacity-20 blur-xl"
                style={{
-                 background: 'radial-gradient(circle, rgba(255, 215, 0, 0.6), transparent)',
+                 background: 'radial-gradient(circle, rgba(184, 134, 11, 0.6), transparent)',
                  animation: 'pulse 2s ease-in-out infinite'
                }}
           />
@@ -288,9 +288,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
               </div>
             </div>
 
-            {/* Mobile Layout - Centered with Larger Fonts */}
+            {/* Mobile Layout - Updated to Gold Colors */}
             <div className="md:hidden text-center px-4 py-8 flex flex-col justify-center items-center min-h-screen">
-              {/* Mobile Main Headline - Centered Design with Larger Fonts */}
+              {/* Mobile Main Headline - Updated to Gold Colors */}
               <div className="mb-8 space-y-2">
                 <h1 className="text-6xl sm:text-7xl leading-none font-black tracking-tight">
                   <span 
@@ -315,16 +315,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                     JUST
                   </span>
                   
-                  {/* Fixed word "Amplify" with orange background */}
+                  {/* Fixed word "Amplify" with gold background */}
                   <div className="relative inline-block transform -rotate-3 mt-2">
                     <span 
-                      className="block text-white font-black tracking-tight px-6 py-3 relative z-10"
+                      className="block text-black font-black tracking-tight px-6 py-3 relative z-10"
                       style={{ 
                         fontFamily: 'Inter, sans-serif',
                         fontWeight: '900',
                         letterSpacing: '-0.03em',
-                        background: 'linear-gradient(135deg, #FF4500 0%, #FF6B35 50%, #FF8C42 100%)',
-                        boxShadow: '0 8px 32px rgba(255, 69, 0, 0.4)',
+                        background: 'linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%)',
+                        boxShadow: '0 8px 32px rgba(212, 175, 55, 0.4)',
                         fontSize: '3.5rem'
                       }}
                     >
@@ -345,7 +345,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 </h1>
               </div>
 
-              {/* Mobile subtitle - Centered with Larger Font */}
+              {/* Mobile subtitle - Updated to Gold Color */}
               <p 
                 className="text-lg sm:text-xl leading-relaxed max-w-md mx-auto opacity-90 text-center"
                 style={{
@@ -360,7 +360,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   style={{ 
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontWeight: '600',
-                    color: '#FF4500'
+                    color: '#D4AF37'
                   }}
                 >
                   growth.
