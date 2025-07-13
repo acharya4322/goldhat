@@ -67,23 +67,94 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           />
         </div>
 
-        {/* Small CTA button positioned at bottom left */}
+        {/* Bottom Left - START TRANSFORMATION Button */}
         <div className="absolute bottom-6 left-6 z-20">
           <button
             onClick={() => scrollToSection('contact')}
-            className="group bg-transparent border-2 border-white text-white px-3 py-2 sm:px-4 sm:py-2 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 hover:bg-white hover:text-black relative overflow-hidden"
+            className="group bg-transparent border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 hover:bg-white hover:text-black relative overflow-hidden"
             style={{
               fontFamily: 'Space Grotesk, sans-serif',
               fontWeight: '600',
-              fontSize: '0.75rem',
+              fontSize: '0.9rem',
               letterSpacing: '0.05em'
             }}
           >
-            <div className="flex items-center justify-center space-x-1 relative z-10">
-              <span>START</span>
-              <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+            <div className="flex items-center justify-center space-x-2 relative z-10">
+              <span>START TRANSFORMATION</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </div>
           </button>
+        </div>
+
+        {/* Bottom Right - Stats */}
+        <div className="absolute bottom-6 right-6 z-20">
+          <div className="text-right space-y-4">
+            <div className="text-right">
+              <div 
+                className="text-white text-3xl sm:text-4xl md:text-5xl font-black"
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontWeight: '900'
+                }}
+              >
+                5<span className="text-orange-500">+</span>
+              </div>
+              <div 
+                className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
+                style={{
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontWeight: '400',
+                  letterSpacing: '0.1em'
+                }}
+              >
+                Projects
+              </div>
+            </div>
+            
+            <div className="text-right">
+              <div 
+                className="text-white text-3xl sm:text-4xl md:text-5xl font-black"
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontWeight: '900'
+                }}
+              >
+                100<span className="text-orange-500">%</span>
+              </div>
+              <div 
+                className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
+                style={{
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontWeight: '400',
+                  letterSpacing: '0.1em'
+                }}
+              >
+                Satisfaction
+              </div>
+            </div>
+            
+            <div className="text-right">
+              <div 
+                className="text-white text-3xl sm:text-4xl md:text-5xl font-black"
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontWeight: '900'
+                }}
+              >
+                2025
+              </div>
+              <div 
+                className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
+                style={{
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontWeight: '400',
+                  letterSpacing: '0.1em'
+                }}
+              >
+                Founded
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 text-center">
@@ -133,7 +204,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
 
             {/* Enhanced subtitle */}
             <p 
-              className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2 sm:px-0"
+              className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-12 sm:mb-16 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2 sm:px-0"
               style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontWeight: '400'
@@ -150,73 +221,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 growth.
               </span>
             </p>
-
-            {/* Enhanced stats */}
-            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto">
-              <div className="text-center group cursor-default">
-                <div 
-                  className="text-2xl sm:text-3xl md:text-4xl text-white mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300"
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: '900'
-                  }}
-                >
-                  5<span className="text-orange-500">+</span>
-                </div>
-                <div 
-                  className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
-                  style={{
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '400',
-                    letterSpacing: '0.1em'
-                  }}
-                >
-                  Projects
-                </div>
-              </div>
-              <div className="text-center group cursor-default">
-                <div 
-                  className="text-2xl sm:text-3xl md:text-4xl text-white mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300"
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: '900'
-                  }}
-                >
-                  100<span className="text-orange-500">%</span>
-                </div>
-                <div 
-                  className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
-                  style={{
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '400',
-                    letterSpacing: '0.1em'
-                  }}
-                >
-                  Satisfaction
-                </div>
-              </div>
-              <div className="text-center group cursor-default">
-                <div 
-                  className="text-2xl sm:text-3xl md:text-4xl text-white mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300"
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: '900'
-                  }}
-                >
-                  2025
-                </div>
-                <div 
-                  className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
-                  style={{
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '400',
-                    letterSpacing: '0.1em'
-                  }}
-                >
-                  Founded
-                </div>
-              </div>
-            </div>
 
             {/* Enhanced scroll indicator */}
             <div 
