@@ -41,27 +41,30 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
         id="home"
         className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20"
         style={{
-          background: '#0a0a0a'
+          background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1611 50%, #0f0f0f 100%)'
         }}
       >
-        {/* Animated 3D Elements */}
+        {/* Animated 3D Elements with Gold Theme */}
         <div className="absolute inset-0 opacity-60">
           {/* Floating ring elements */}
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full border-4 border-orange-500 animate-spin-slow opacity-40"
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full border-4 opacity-40"
                style={{
-                 background: 'linear-gradient(45deg, transparent, rgba(255, 165, 0, 0.1), transparent)',
+                 borderColor: '#D4AF37',
+                 background: 'linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent)',
                  animation: 'spin 20s linear infinite'
                }}
           />
-          <div className="absolute top-1/3 right-1/3 w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 rounded-full border-2 border-red-500 animate-pulse opacity-30"
+          <div className="absolute top-1/3 right-1/3 w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 rounded-full border-2 opacity-30"
                style={{
-                 background: 'radial-gradient(circle, rgba(255, 0, 0, 0.1), transparent)',
+                 borderColor: '#FFD700',
+                 background: 'radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent)',
                  animation: 'pulse 3s ease-in-out infinite'
                }}
           />
-          <div className="absolute bottom-1/4 right-1/4 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full border-3 border-yellow-500 opacity-20"
+          <div className="absolute bottom-1/4 right-1/4 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full border-3 opacity-20"
                style={{
-                 background: 'conic-gradient(from 0deg, transparent, rgba(255, 255, 0, 0.2), transparent)',
+                 borderColor: '#B8860B',
+                 background: 'conic-gradient(from 0deg, transparent, rgba(184, 134, 11, 0.2), transparent)',
                  animation: 'spin 15s linear infinite reverse'
                }}
           />
@@ -71,12 +74,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
         <div className="absolute bottom-6 left-6 z-20">
           <button
             onClick={() => scrollToSection('contact')}
-            className="group bg-transparent border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 hover:bg-white hover:text-black relative overflow-hidden"
+            className="group bg-transparent border-2 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 relative overflow-hidden"
             style={{
               fontFamily: 'Space Grotesk, sans-serif',
               fontWeight: '600',
               fontSize: '0.9rem',
-              letterSpacing: '0.05em'
+              letterSpacing: '0.05em',
+              borderColor: '#D4AF37'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
+              e.currentTarget.style.color = '#0a0a0a';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.color = '#ffffff';
             }}
           >
             <div className="flex items-center justify-center space-x-2 relative z-10">
@@ -97,14 +109,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   fontWeight: '900'
                 }}
               >
-                5<span className="text-orange-500">+</span>
+                5<span style={{ color: '#D4AF37' }}>+</span>
               </div>
               <div 
-                className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
+                className="text-xs sm:text-sm uppercase tracking-wider"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
-                  letterSpacing: '0.1em'
+                  letterSpacing: '0.1em',
+                  color: '#B8860B'
                 }}
               >
                 Projects
@@ -119,14 +132,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   fontWeight: '900'
                 }}
               >
-                100<span className="text-orange-500">%</span>
+                100<span style={{ color: '#D4AF37' }}>%</span>
               </div>
               <div 
-                className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
+                className="text-xs sm:text-sm uppercase tracking-wider"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
-                  letterSpacing: '0.1em'
+                  letterSpacing: '0.1em',
+                  color: '#B8860B'
                 }}
               >
                 Satisfaction
@@ -144,11 +158,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 2025
               </div>
               <div 
-                className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider"
+                className="text-xs sm:text-sm uppercase tracking-wider"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
-                  letterSpacing: '0.1em'
+                  letterSpacing: '0.1em',
+                  color: '#B8860B'
                 }}
               >
                 Founded
@@ -176,14 +191,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 We Don't Just
               </span>
               
-              {/* Highlighted rotating word with background */}
+              {/* Highlighted rotating word with gold background */}
               <div className="relative inline-block my-3 sm:my-4 md:my-6">
                 <span 
-                  className="block text-white font-black tracking-tight bg-gradient-to-r from-orange-500 to-red-500 px-4 sm:px-8 py-2 sm:py-4 transform -rotate-2 relative z-10 hover:scale-105 transition-transform duration-500"
+                  className="block text-black font-black tracking-tight px-4 sm:px-8 py-2 sm:py-4 transform -rotate-2 relative z-10 hover:scale-105 transition-transform duration-500"
                   style={{ 
                     fontFamily: 'Inter, sans-serif',
                     fontWeight: '900',
-                    letterSpacing: '-0.02em'
+                    letterSpacing: '-0.02em',
+                    background: 'linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%)',
+                    boxShadow: '0 8px 32px rgba(212, 175, 55, 0.3)'
                   }}
                 >
                   {textRotation[currentText]}
@@ -204,18 +221,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
 
             {/* Enhanced subtitle */}
             <p 
-              className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-12 sm:mb-16 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2 sm:px-0"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl mb-12 sm:mb-16 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2 sm:px-0"
               style={{
                 fontFamily: 'Space Grotesk, sans-serif',
-                fontWeight: '400'
+                fontWeight: '400',
+                color: '#E6E6E6'
               }}
             >
               We turn strategy into unstoppable 
               <span 
-                className="text-orange-500 font-semibold ml-1 sm:ml-2"
+                className="font-semibold ml-1 sm:ml-2"
                 style={{ 
                   fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '600'
+                  fontWeight: '600',
+                  color: '#D4AF37'
                 }}
               > 
                 growth.
@@ -228,7 +247,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
               onClick={() => scrollToSection('about')}
             >
               <ChevronDown 
-                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-gray-400 group-hover:text-white transition-all duration-300 group-hover:scale-125 animate-bounce"
+                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 transition-all duration-300 group-hover:scale-125 animate-bounce"
+                style={{ 
+                  color: '#B8860B',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#D4AF37';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#B8860B';
+                }}
               />
             </div>
           </div>
