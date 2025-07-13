@@ -61,30 +61,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 sm:w-56 sm:h-56 md:w-72 md:h-72 bg-orange-400 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
         </div>
 
-        {/* Small CTA button positioned at bottom left */}
-        <div className="absolute bottom-6 left-6 z-20">
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="group bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-md transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-amber-500/25 border border-amber-400 relative overflow-hidden"
-            style={{
-              fontFamily: 'Bungee, sans-serif',
-              fontWeight: '400',
-              fontSize: '0.75rem',
-              letterSpacing: '0.05em',
-              textShadow: '1px 1px 2px rgba(0,0,0,0.8)',
-              boxShadow: '0 8px 20px -8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(245, 158, 11, 0.5)'
-            }}
-          >
-            {/* Animated background effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-amber-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            
-            <div className="flex items-center justify-center space-x-1 relative z-10">
-              <span className="drop-shadow-lg">START</span>
-              <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300 drop-shadow-lg" />
-            </div>
-          </button>
-        </div>
-
         <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 text-center">
           <div 
             className={`transition-all duration-1000 ${
@@ -152,6 +128,30 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 growth.
               </span>
             </p>
+
+            {/* Enhanced CTA button - Mobile optimized */}
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="group bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 text-white px-6 py-4 sm:px-8 sm:py-5 md:px-12 md:py-6 rounded-lg sm:rounded-xl transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-2xl hover:shadow-amber-500/25 border-2 border-amber-400 relative overflow-hidden w-full sm:w-auto max-w-sm sm:max-w-none mx-auto"
+                style={{
+                  fontFamily: 'Bungee, sans-serif',
+                  fontWeight: '400',
+                  fontSize: 'clamp(0.875rem, 2.5vw, 1.25rem)',
+                  letterSpacing: '0.05em',
+                  textShadow: '1px 1px 2px rgba(0,0,0,0.8)',
+                  boxShadow: '0 15px 35px -12px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(245, 158, 11, 0.5), 0 0 20px rgba(245, 158, 11, 0.3)'
+                }}
+              >
+                {/* Animated background effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-amber-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                <div className="flex items-center justify-center space-x-2 sm:space-x-3 relative z-10">
+                  <span className="drop-shadow-lg">START TRANSFORMATION</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform duration-300 drop-shadow-lg" />
+                </div>
+              </button>
+            </div>
 
             {/* Enhanced stats with mobile typography */}
             <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto">
