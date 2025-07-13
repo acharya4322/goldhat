@@ -395,7 +395,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         fontWeight: '900',
                         letterSpacing: '-0.03em',
                         textShadow: '0 0 30px rgba(255, 255, 255, 0.1)',
-                        fontSize: '3.6rem',
+                        fontSize: '3.5rem',
                       }}
                     >
                       WE DON'T JUST
@@ -427,7 +427,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         fontWeight: '900',
                         letterSpacing: '-0.03em',
                         textShadow: '0 0 30px rgba(255, 255, 255, 0.1)',
-                        fontSize: '3.6rem',
+                        fontSize: '3.5rem',
                       }}
                     >
                       YOUR BRAND
