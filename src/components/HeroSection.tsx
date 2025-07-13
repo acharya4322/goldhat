@@ -426,7 +426,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         fontFamily: 'Inter, sans-serif',
                         fontWeight: '900',
                         letterSpacing: '-0.03em',
-                        textShadow: '0 0 30px rgba(255, 255, 255, 0.1)'
+                        textShadow: '0 0 30px rgba(255, 255, 255, 0.1)',
+                        fontSize: '3.6rem',
                       }}
                     >
                       YOUR BRAND
