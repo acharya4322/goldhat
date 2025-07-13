@@ -289,6 +289,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
               </div>
             </div>
           </div>
+          
 
         </div>
       </section>
