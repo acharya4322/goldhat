@@ -260,16 +260,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
         </div>
 
         {/* Mobile Bottom Elements - NEW */}
-        <div className="absolute bottom-4 left-4 right-4 z-20 md:hidden">
+        <div className="absolute bottom-6 left-4 right-4 z-20 md:hidden">
           <div className="flex justify-between items-end">
             {/* Mobile START TRANSFORMATION Button */}
             <button
               onClick={() => scrollToSection('contact')}
-              className="group relative bg-transparent border-2 text-white px-4 py-2 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
+              className="group relative bg-transparent border-2 text-white px-5 py-3 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden flex-shrink-0"
               style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontWeight: '600',
-                fontSize: '0.75rem',
+                fontSize: '0.8rem',
                 letterSpacing: '0.05em',
                 borderColor: '#D4AF37',
                 boxShadow: '0 0 20px rgba(212, 175, 55, 0.2)'
@@ -287,18 +287,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 }, 100);
               }}
             >
-              <div className="flex items-center justify-center space-x-1.5 relative z-10">
-                <Sparkles className="w-3 h-3" />
+              <div className="flex items-center justify-center space-x-2 relative z-10">
+                <Sparkles className="w-3.5 h-3.5" />
                 <span>START</span>
-                <ArrowRight className="w-3 h-3" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </button>
 
             {/* Mobile Stats - Horizontal Layout */}
-            <div className="flex space-x-4 text-right">
-              <div className="text-center group cursor-pointer">
+            <div className="flex space-x-3 text-center">
+              <div className="text-center group cursor-pointer min-w-0">
                 <div 
-                  className="text-white text-2xl font-black transition-all duration-300 group-active:scale-110"
+                  className="text-white text-xl font-black transition-all duration-300 group-active:scale-110 leading-tight"
                   style={{
                     fontFamily: 'Orbitron, sans-serif',
                     fontWeight: '900',
@@ -308,11 +308,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   5<span style={{ color: '#D4AF37' }}>+</span>
                 </div>
                 <div 
-                  className="text-xs uppercase tracking-wider"
+                  className="text-xs uppercase tracking-wider leading-tight"
                   style={{
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontWeight: '400',
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.05em',
                     color: '#B8860B'
                   }}
                 >
@@ -320,9 +320,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 </div>
               </div>
               
-              <div className="text-center group cursor-pointer">
+              <div className="text-center group cursor-pointer min-w-0">
                 <div 
-                  className="text-white text-2xl font-black transition-all duration-300 group-active:scale-110"
+                  className="text-white text-xl font-black transition-all duration-300 group-active:scale-110 leading-tight"
                   style={{
                     fontFamily: 'Orbitron, sans-serif',
                     fontWeight: '900',
@@ -332,11 +332,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   100<span style={{ color: '#D4AF37' }}>%</span>
                 </div>
                 <div 
-                  className="text-xs uppercase tracking-wider"
+                  className="text-xs uppercase tracking-wider leading-tight"
                   style={{
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontWeight: '400',
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.05em',
                     color: '#B8860B'
                   }}
                 >
@@ -344,9 +344,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 </div>
               </div>
               
-              <div className="text-center group cursor-pointer">
+              <div className="text-center group cursor-pointer min-w-0">
                 <div 
-                  className="text-white text-2xl font-black transition-all duration-300 group-active:scale-110"
+                  className="text-white text-xl font-black transition-all duration-300 group-active:scale-110 leading-tight"
                   style={{
                     fontFamily: 'Orbitron, sans-serif',
                     fontWeight: '900',
@@ -356,11 +356,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   2025
                 </div>
                 <div 
-                  className="text-xs uppercase tracking-wider"
+                  className="text-xs uppercase tracking-wider leading-tight"
                   style={{
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontWeight: '400',
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.05em',
                     color: '#B8860B'
                   }}
                 >
@@ -480,7 +480,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
             </div>
 
             {/* Enhanced Mobile Layout */}
-            <div className="md:hidden text-center px-4 py-8 flex flex-col justify-center items-center min-h-screen">
+            <div className="md:hidden text-center px-4 py-8 flex flex-col justify-center items-center" style={{ minHeight: 'calc(100vh - 120px)' }}>
               <div className="mb-8 space-y-2">
                 <h1 className="text-6xl sm:text-7xl leading-none font-black tracking-tight">
                   <span 
@@ -542,7 +542,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
 
               {/* Enhanced Mobile subtitle */}
               <p 
-                className="text-lg sm:text-xl leading-relaxed max-w-md mx-auto opacity-90 text-center mb-16"
+                className="text-lg sm:text-xl leading-relaxed max-w-md mx-auto opacity-90 text-center mb-12"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
