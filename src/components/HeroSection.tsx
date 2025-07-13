@@ -75,7 +75,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           {/* Gradient orbs for mobile */}
           <div className="absolute top-20 left-0 w-64 h-64 rounded-full opacity-30 blur-3xl"
                style={{
-                 background: 'radial-gradient(circle, rgba(212, 175, 55, 0.4), transparent)',
+                 background: 'radial-gradient(circle, rgba(255, 69, 0, 0.4), transparent)',
                  animation: 'pulse 4s ease-in-out infinite'
                }}
           />
