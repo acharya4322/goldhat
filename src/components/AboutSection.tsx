@@ -105,18 +105,17 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`} style={{ transitionDelay: '0.2s' }}>
             
-            <p 
-              className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-6`}
-              style={{ fontFamily: 'Rubik, sans-serif' }}
-            >
-              We're a team of digital rebels who turn ordinary brands into extraordinary success stories.
-            </p>
-            
             {/* Expandable Content */}
             <div className={`transition-all duration-500 overflow-hidden ${
               showMore ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
             }`}>
               <div className="space-y-4 pt-4">
+                <p 
+                  className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-6`}
+                  style={{ fontFamily: 'Rubik, sans-serif' }}
+                >
+                  We're a team of digital rebels who turn ordinary brands into extraordinary success stories.
+                </p>
                 <p 
                   className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}
                   style={{ fontFamily: 'Rubik, sans-serif' }}
