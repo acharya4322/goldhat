@@ -493,7 +493,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                           e.currentTarget.style.background = 'transparent';
                           e.currentTarget.style.color = '#ffffff';
                           e.currentTarget.style.boxShadow = '0 0 10px rgba(212, 175, 55, 0.2)';
-                        }, 200);
+                        }, 20);
                       }}
                     >
                       <div className="flex items-center justify-center space-x-1 relative z-10">
