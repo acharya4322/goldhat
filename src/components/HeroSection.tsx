@@ -385,7 +385,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
             {/* Mobile Layout - Fixed to center vertically */}
             <div className="md:hidden text-center px-4 flex flex-col justify-center items-center h-screen">
               {/* Main Content Section - Centered */}
-              <div className="flex flex-col justify-center items-center -mt-8">
+              <div className="flex flex-col justify-center items-center -mt-20">
                 <div className="space-y-3">
                   <h1 className="text-4xl sm:text-5xl leading-none font-black tracking-tight">
                     <span 
