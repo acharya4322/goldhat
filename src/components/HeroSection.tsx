@@ -398,7 +398,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         fontSize: '3.5rem',
                       }}
                     >
-                      WE DON'T JUST
+                      WE DON'T KUST
                     </span>
                     
                     {/* Enhanced mobile word */}
