@@ -478,7 +478,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                       style={{
                         fontFamily: 'Space Grotesk, sans-serif',
                         fontWeight: '600',
-                        fontSize: '0.1rem',
+                        fontSize: '1.0rem',
                         letterSpacing: '0.02em',
                         borderColor: '#D4AF37',
                         boxShadow: '0 0 10px rgba(212, 175, 55, 0.2)'
