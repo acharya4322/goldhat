@@ -428,9 +428,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 </h1>
               </div>
 
-              {/* Enhanced Mobile subtitle */}
+              {/* Enhanced Mobile subtitle - REDUCED FONT SIZE */}
               <p 
-                className="text-lg sm:text-xl leading-relaxed max-w-md mx-auto opacity-90 text-center"
+                className="text-sm sm:text-base leading-relaxed max-w-md mx-auto opacity-90 text-center"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
