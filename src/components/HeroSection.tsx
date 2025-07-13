@@ -288,11 +288,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
               </div>
             </div>
 
-            {/* Mobile Layout - Clean First Impression */}
-            <div className="md:hidden text-left px-4 py-8 flex flex-col justify-center min-h-screen">
-              {/* Mobile Main Headline - Stacked Design */}
+            {/* Mobile Layout - Centered with Larger Fonts */}
+            <div className="md:hidden text-center px-4 py-8 flex flex-col justify-center items-center min-h-screen">
+              {/* Mobile Main Headline - Centered Design with Larger Fonts */}
               <div className="mb-8 space-y-2">
-                <h1 className="text-5xl sm:text-6xl leading-none font-black tracking-tight">
+                <h1 className="text-6xl sm:text-7xl leading-none font-black tracking-tight">
                   <span 
                     className="block text-white"
                     style={{ 
@@ -318,14 +318,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   {/* Fixed word "Amplify" with orange background */}
                   <div className="relative inline-block transform -rotate-3 mt-2">
                     <span 
-                      className="block text-white font-black tracking-tight px-4 py-2 relative z-10"
+                      className="block text-white font-black tracking-tight px-6 py-3 relative z-10"
                       style={{ 
                         fontFamily: 'Inter, sans-serif',
                         fontWeight: '900',
                         letterSpacing: '-0.03em',
                         background: 'linear-gradient(135deg, #FF4500 0%, #FF6B35 50%, #FF8C42 100%)',
                         boxShadow: '0 8px 32px rgba(255, 69, 0, 0.4)',
-                        fontSize: '3rem'
+                        fontSize: '3.5rem'
                       }}
                     >
                       Amplify
@@ -345,9 +345,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 </h1>
               </div>
 
-              {/* Mobile subtitle */}
+              {/* Mobile subtitle - Centered with Larger Font */}
               <p 
-                className="text-base leading-relaxed max-w-xs opacity-90"
+                className="text-lg sm:text-xl leading-relaxed max-w-md mx-auto opacity-90 text-center"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
