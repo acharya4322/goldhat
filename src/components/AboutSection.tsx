@@ -60,6 +60,17 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
     };
   }, []);
 
+  // Auto-sliding effect
+  useEffect(() => {
+    if (isVisible) {
+      const interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % services.length);
+      }, 3000); // Change slide every 3 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [isVisible, services.length]);
+
   return (
     <>
       <link 
