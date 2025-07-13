@@ -9,7 +9,9 @@ import {
   Code,
   Smartphone,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 
 type AboutSectionProps = {
@@ -19,7 +21,25 @@ type AboutSectionProps = {
 const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const aboutRef = useRef<HTMLDivElement>(null);
+
+  const services = [
+    { title: 'Strategy', icon: <Target className="w-6 h-6" /> },
+    { title: 'Design', icon: <PenTool className="w-6 h-6" /> },
+    { title: 'Growth', icon: <TrendingUp className="w-6 h-6" /> },
+    { title: 'Analytics', icon: <BarChart3 className="w-6 h-6" /> },
+    { title: 'Development', icon: <Code className="w-6 h-6" /> },
+    { title: 'Mobile Apps', icon: <Smartphone className="w-6 h-6" /> }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % services.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + services.length) % services.length);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -140,15 +160,9 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
               What We Do
             </h3>
             
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { title: 'Strategy', icon: <Target className="w-6 h-6" /> },
-                { title: 'Design', icon: <PenTool className="w-6 h-6" /> },
-                { title: 'Growth', icon: <TrendingUp className="w-6 h-6" /> },
-                { title: 'Analytics', icon: <BarChart3 className="w-6 h-6" /> },
-                { title: 'Development', icon: <Code className="w-6 h-6" /> },
-                { title: 'Mobile Apps', icon: <Smartphone className="w-6 h-6" /> }
-              ].map((service, index) => (
+            {/* Desktop Grid */}
+            <div className="hidden lg:grid grid-cols-3 gap-6">
+              {services.map((service, index) => (
                 <div
                   key={index}
                   className={`p-6 rounded-2xl transition-all duration-300 hover:scale-105 ${
@@ -168,6 +182,78 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
                   </h4>
                 </div>
               ))}
+            </div>
+
+            {/* Mobile Carousel */}
+            <div className="lg:hidden">
+              <div className="relative">
+                <div className="overflow-hidden rounded-2xl">
+                  <div 
+                    className="flex transition-transform duration-300 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {services.map((service, index) => (
+                      <div
+                        key={index}
+                        className={`w-full flex-shrink-0 p-6 ${
+                          darkMode
+                            ? 'bg-gray-800'
+                            : 'bg-white'
+                        } shadow-lg`}
+                      >
+                        <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                          {service.icon}
+                        </div>
+                        <h4 
+                          className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}
+                          style={{ fontFamily: 'Righteous, sans-serif' }}
+                        >
+                          {service.title}
+                        </h4>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Navigation Buttons */}
+                <button
+                  onClick={prevSlide}
+                  className={`absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    darkMode
+                      ? 'bg-gray-700 hover:bg-gray-600 text-white'
+                      : 'bg-white hover:bg-gray-50 text-gray-900'
+                  } shadow-lg`}
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className={`absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    darkMode
+                      ? 'bg-gray-700 hover:bg-gray-600 text-white'
+                      : 'bg-white hover:bg-gray-50 text-gray-900'
+                  } shadow-lg`}
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+              
+              {/* Dots Indicator */}
+              <div className="flex justify-center space-x-2 mt-6">
+                {services.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentSlide
+                        ? 'bg-amber-500 scale-125'
+                        : darkMode
+                          ? 'bg-gray-600 hover:bg-gray-500'
+                          : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
