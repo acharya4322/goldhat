@@ -44,8 +44,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1611 50%, #0f0f0f 100%)'
         }}
       >
-        {/* Animated 3D Elements with Gold Theme */}
-        <div className="absolute inset-0 opacity-60">
+        {/* Desktop Background Elements - Hidden on Mobile */}
+        <div className="absolute inset-0 opacity-60 hidden md:block">
           {/* Floating ring elements */}
           <div className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full border-4 opacity-40"
                style={{
@@ -70,8 +70,31 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           />
         </div>
 
-        {/* Bottom Left - START TRANSFORMATION Button */}
-        <div className="absolute bottom-6 left-6 z-20">
+        {/* Mobile Background Elements - Visible only on Mobile */}
+        <div className="absolute inset-0 md:hidden">
+          {/* Gradient orbs for mobile */}
+          <div className="absolute top-20 left-0 w-64 h-64 rounded-full opacity-30 blur-3xl"
+               style={{
+                 background: 'radial-gradient(circle, rgba(255, 69, 0, 0.4), transparent)',
+                 animation: 'pulse 4s ease-in-out infinite'
+               }}
+          />
+          <div className="absolute bottom-32 right-0 w-48 h-48 rounded-full opacity-40 blur-2xl"
+               style={{
+                 background: 'radial-gradient(circle, rgba(212, 175, 55, 0.5), transparent)',
+                 animation: 'pulse 3s ease-in-out infinite reverse'
+               }}
+          />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full opacity-20 blur-xl"
+               style={{
+                 background: 'radial-gradient(circle, rgba(255, 215, 0, 0.6), transparent)',
+                 animation: 'pulse 2s ease-in-out infinite'
+               }}
+          />
+        </div>
+
+        {/* Desktop Bottom Left - START TRANSFORMATION Button */}
+        <div className="absolute bottom-6 left-6 z-20 hidden md:block">
           <button
             onClick={() => scrollToSection('contact')}
             className="group bg-transparent border-2 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 relative overflow-hidden"
@@ -98,8 +121,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           </button>
         </div>
 
-        {/* Bottom Right - Stats */}
-        <div className="absolute bottom-6 right-6 z-20">
+        {/* Desktop Bottom Right - Stats */}
+        <div className="absolute bottom-6 right-6 z-20 hidden md:block">
           <div className="text-right space-y-4">
             <div className="text-right">
               <div 
@@ -172,93 +195,277 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+        {/* Main Content Container */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <div 
             className={`transition-all duration-1000 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            {/* Main Headline with Mobile-Responsive Typography */}
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-6 sm:mb-8 leading-tight text-center">
-              <span 
-                className="block text-white tracking-tight font-black"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  fontWeight: '900',
-                  letterSpacing: '-0.02em'
-                }}
-              >
-                We Don't Just
-              </span>
-              
-              {/* Highlighted rotating word with gold background */}
-              <div className="relative inline-block my-3 sm:my-4 md:my-6">
+            {/* Desktop Layout */}
+            <div className="hidden md:block text-center">
+              {/* Main Headline with Desktop Typography */}
+              <h1 className="text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-6 sm:mb-8 leading-tight">
                 <span 
-                  className="block text-black font-black tracking-tight px-4 sm:px-8 py-2 sm:py-4 transform -rotate-2 relative z-10 hover:scale-105 transition-transform duration-500"
+                  className="block text-white tracking-tight font-black"
                   style={{ 
                     fontFamily: 'Inter, sans-serif',
                     fontWeight: '900',
-                    letterSpacing: '-0.02em',
-                    background: 'linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%)',
-                    boxShadow: '0 8px 32px rgba(212, 175, 55, 0.3)'
+                    letterSpacing: '-0.02em'
                   }}
                 >
-                  {textRotation[currentText]}
+                  We Don't Just
                 </span>
-              </div>
-              
-              <span 
-                className="block text-white tracking-tight font-black"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  fontWeight: '900',
-                  letterSpacing: '-0.02em'
+                
+                {/* Highlighted rotating word with gold background */}
+                <div className="relative inline-block my-6">
+                  <span 
+                    className="block text-black font-black tracking-tight px-8 py-4 transform -rotate-2 relative z-10 hover:scale-105 transition-transform duration-500"
+                    style={{ 
+                      fontFamily: 'Inter, sans-serif',
+                      fontWeight: '900',
+                      letterSpacing: '-0.02em',
+                      background: 'linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%)',
+                      boxShadow: '0 8px 32px rgba(212, 175, 55, 0.3)'
+                    }}
+                  >
+                    {textRotation[currentText]}
+                  </span>
+                </div>
+                
+                <span 
+                  className="block text-white tracking-tight font-black"
+                  style={{ 
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: '900',
+                    letterSpacing: '-0.02em'
+                  }}
+                >
+                  Your Brand
+                </span>
+              </h1>
+
+              {/* Desktop subtitle */}
+              <p 
+                className="text-xl lg:text-2xl mb-16 max-w-3xl mx-auto leading-relaxed"
+                style={{
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontWeight: '400',
+                  color: '#E6E6E6'
                 }}
               >
-                Your Brand
-              </span>
-            </h1>
+                We turn strategy into unstoppable 
+                <span 
+                  className="font-semibold ml-2"
+                  style={{ 
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontWeight: '600',
+                    color: '#D4AF37'
+                  }}
+                > 
+                  growth.
+                </span>
+              </p>
 
-            {/* Enhanced subtitle */}
-            <p 
-              className="text-base sm:text-lg md:text-xl lg:text-2xl mb-12 sm:mb-16 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2 sm:px-0"
-              style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontWeight: '400',
-                color: '#E6E6E6'
-              }}
-            >
-              We turn strategy into unstoppable 
-              <span 
-                className="font-semibold ml-1 sm:ml-2"
-                style={{ 
+              {/* Desktop scroll indicator */}
+              <div 
+                className="cursor-pointer group inline-block" 
+                onClick={() => scrollToSection('about')}
+              >
+                <ChevronDown 
+                  className="w-8 h-8 transition-all duration-300 group-hover:scale-125 animate-bounce"
+                  style={{ 
+                    color: '#B8860B',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#D4AF37';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#B8860B';
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Mobile Layout - Inspired by Reference */}
+            <div className="md:hidden text-left px-4 py-8">
+              {/* Mobile Main Headline - Stacked Design */}
+              <div className="mb-8 space-y-2">
+                <h1 className="text-5xl sm:text-6xl leading-none font-black tracking-tight">
+                  <span 
+                    className="block text-white"
+                    style={{ 
+                      fontFamily: 'Inter, sans-serif',
+                      fontWeight: '900',
+                      letterSpacing: '-0.03em'
+                    }}
+                  >
+                    WE DON'T
+                  </span>
+                  
+                  <span 
+                    className="block text-white"
+                    style={{ 
+                      fontFamily: 'Inter, sans-serif',
+                      fontWeight: '900',
+                      letterSpacing: '-0.03em'
+                    }}
+                  >
+                    JUST
+                  </span>
+                  
+                  {/* Highlighted word with orange background like reference */}
+                  <div className="relative inline-block transform -rotate-3 mt-2">
+                    <span 
+                      className="block text-white font-black tracking-tight px-4 py-2 relative z-10"
+                      style={{ 
+                        fontFamily: 'Inter, sans-serif',
+                        fontWeight: '900',
+                        letterSpacing: '-0.03em',
+                        background: 'linear-gradient(135deg, #FF4500 0%, #FF6B35 50%, #FF8C42 100%)',
+                        boxShadow: '0 8px 32px rgba(255, 69, 0, 0.4)',
+                        fontSize: '3rem'
+                      }}
+                    >
+                      {textRotation[currentText]}
+                    </span>
+                  </div>
+                  
+                  <span 
+                    className="block text-white mt-2"
+                    style={{ 
+                      fontFamily: 'Inter, sans-serif',
+                      fontWeight: '900',
+                      letterSpacing: '-0.03em'
+                    }}
+                  >
+                    YOUR BRAND
+                  </span>
+                </h1>
+              </div>
+
+              {/* Mobile subtitle */}
+              <p 
+                className="text-sm leading-relaxed mb-8 max-w-xs opacity-90"
+                style={{
                   fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '600',
-                  color: '#D4AF37'
+                  fontWeight: '400',
+                  color: '#E6E6E6'
                 }}
-              > 
-                growth.
-              </span>
-            </p>
+              >
+                We turn strategy into unstoppable{' '}
+                <span 
+                  className="font-semibold"
+                  style={{ 
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontWeight: '600',
+                    color: '#FF4500'
+                  }}
+                >
+                  growth.
+                </span>
+              </p>
 
-            {/* Enhanced scroll indicator */}
-            <div 
-              className="cursor-pointer group inline-block" 
-              onClick={() => scrollToSection('about')}
-            >
-              <ChevronDown 
-                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 transition-all duration-300 group-hover:scale-125 animate-bounce"
-                style={{ 
-                  color: '#B8860B',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#D4AF37';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#B8860B';
-                }}
-              />
+              {/* Mobile CTA Button */}
+              <div className="mb-12">
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="group bg-transparent border-2 text-white px-8 py-4 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 relative overflow-hidden w-full sm:w-auto"
+                  style={{
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontWeight: '600',
+                    fontSize: '0.9rem',
+                    letterSpacing: '0.05em',
+                    borderColor: '#FF4500'
+                  }}
+                  onTouchStart={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, #FF4500, #FF6B35)';
+                    e.currentTarget.style.color = '#ffffff';
+                  }}
+                  onTouchEnd={(e) => {
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.color = '#ffffff';
+                  }}
+                >
+                  <div className="flex items-center justify-center space-x-2 relative z-10">
+                    <span>START TRANSFORMATION</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
+                </button>
+              </div>
+
+              {/* Mobile Stats - Horizontal Layout */}
+              <div className="flex justify-between items-center border-t border-gray-800 pt-6">
+                <div className="text-center">
+                  <div 
+                    className="text-white text-2xl font-black"
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontWeight: '900'
+                    }}
+                  >
+                    5<span style={{ color: '#FF4500' }}>+</span>
+                  </div>
+                  <div 
+                    className="text-xs uppercase tracking-wider"
+                    style={{
+                      fontFamily: 'Space Grotesk, sans-serif',
+                      fontWeight: '400',
+                      letterSpacing: '0.1em',
+                      color: '#999'
+                    }}
+                  >
+                    Projects
+                  </div>
+                </div>
+                
+                <div className="text-center">
+                  <div 
+                    className="text-white text-2xl font-black"
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontWeight: '900'
+                    }}
+                  >
+                    100<span style={{ color: '#FF4500' }}>%</span>
+                  </div>
+                  <div 
+                    className="text-xs uppercase tracking-wider"
+                    style={{
+                      fontFamily: 'Space Grotesk, sans-serif',
+                      fontWeight: '400',
+                      letterSpacing: '0.1em',
+                      color: '#999'
+                    }}
+                  >
+                    Satisfaction
+                  </div>
+                </div>
+                
+                <div className="text-center">
+                  <div 
+                    className="text-white text-2xl font-black"
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontWeight: '900'
+                    }}
+                  >
+                    2025
+                  </div>
+                  <div 
+                    className="text-xs uppercase tracking-wider"
+                    style={{
+                      fontFamily: 'Space Grotesk, sans-serif',
+                      fontWeight: '400',
+                      letterSpacing: '0.1em',
+                      color: '#999'
+                    }}
+                  >
+                    Founded
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
