@@ -15,6 +15,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
   const [isVisible, setIsVisible] = useState(false);
   const [currentText, setCurrentText] = useState(0);
   const [particles, setParticles] = useState([]);
+  const [showBottomElements, setShowBottomElements] = useState(false);
 
   const textRotation = [
     "Transform",
@@ -47,7 +48,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
 
     generateParticles();
 
-    return () => clearInterval(interval);
+    // Mobile scroll handler
+    const handleScroll = () => {
+      if (window.innerWidth < 768) { // Only for mobile
+        const scrollThreshold = window.innerHeight * 0.3; // Show after 30% scroll
+        setShowBottomElements(window.scrollY > scrollThreshold);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -367,14 +382,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
               </div>
             </div>
 
-            {/* FIXED Mobile Layout - No Overlapping */}
-            <div className="md:hidden text-center px-4 flex flex-col justify-between" style={{ minHeight: 'calc(100vh - 32px)' }}>
-              {/* Main Content Section */}
-              <div className="flex flex-col justify-center flex-1 py-8">
-                <div className="mb-6 space-y-2">
+            {/* Mobile Layout - First Impression Only */}
+            <div className="md:hidden text-center px-4 flex flex-col justify-center min-h-screen">
+              {/* Main Content Section - Always Visible */}
+              <div className="flex flex-col justify-center py-8">
+                <div className="mb-8 space-y-3">
                   <h1 className="text-4xl sm:text-5xl leading-none font-black tracking-tight">
                     <span 
-                      className="block text-white"
+                      className="block text-white mb-2"
                       style={{ 
                         fontFamily: 'Inter, sans-serif',
                         fontWeight: '900',
@@ -382,26 +397,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         textShadow: '0 0 30px rgba(255, 255, 255, 0.1)'
                       }}
                     >
-                      WE DON'T
-                    </span>
-                    
-                    <span 
-                      className="block text-white"
-                      style={{ 
-                        fontFamily: 'Inter, sans-serif',
-                        fontWeight: '900',
-                        letterSpacing: '-0.03em',
-                        textShadow: '0 0 30px rgba(255, 255, 255, 0.1)'
-                      }}
-                    >
-                      JUST
+                      WE DON'T JUST
                     </span>
                     
                     {/* Enhanced mobile word */}
-                    <div className="relative inline-block transform -rotate-2 mt-1 mb-1">
+                    <div className="relative inline-block transform -rotate-2 mb-2">
                       <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg blur-xl opacity-30 animate-pulse" />
                       <span 
-                        className="block text-black font-black tracking-tight px-3 py-1 relative z-10"
+                        className="block text-black font-black tracking-tight px-4 py-2 relative z-10"
                         style={{ 
                           fontFamily: 'Inter, sans-serif',
                           fontWeight: '900',
@@ -428,159 +431,168 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                       YOUR BRAND
                     </span>
                   </h1>
-                </div>
 
-                {/* Enhanced Mobile subtitle */}
-                <p 
-                  className="text-sm sm:text-base leading-relaxed max-w-xs mx-auto opacity-90 text-center"
-                  style={{
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '400',
-                    color: '#B8B8B8',
-                    textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
-                  }}
-                >
-                  We turn strategy into unstoppable{' '}
-                  <span 
-                    className="font-semibold relative"
-                    style={{ 
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      fontWeight: '600',
-                      color: '#D4AF37',
-                      textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                    }}
-                  >
-                    growth.
-                  </span>
-                </p>
-              </div>
-
-              {/* Bottom Elements Section - Fixed Layout */}
-              <div className="pb-6 space-y-6">
-                {/* Mobile START TRANSFORMATION Button */}
-                <div className="flex justify-center">
-                  <button
-                    onClick={() => scrollToSection('contact')}
-                    className="group relative bg-transparent border-2 text-white px-6 py-3 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
+                  {/* Enhanced Mobile subtitle */}
+                  <p 
+                    className="text-base sm:text-lg leading-relaxed max-w-sm mx-auto opacity-90 text-center mt-6"
                     style={{
                       fontFamily: 'Space Grotesk, sans-serif',
-                      fontWeight: '600',
-                      fontSize: '0.75rem',
-                      letterSpacing: '0.05em',
-                      borderColor: '#D4AF37',
-                      boxShadow: '0 0 20px rgba(212, 175, 55, 0.2)'
-                    }}
-                    onTouchStart={(e) => {
-                      e.currentTarget.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
-                      e.currentTarget.style.color = '#0a0a0a';
-                      e.currentTarget.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.5)';
-                    }}
-                    onTouchEnd={(e) => {
-                      setTimeout(() => {
-                        e.currentTarget.style.background = 'transparent';
-                        e.currentTarget.style.color = '#ffffff';
-                        e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.2)';
-                      }, 100);
+                      fontWeight: '400',
+                      color: '#B8B8B8',
+                      textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
                     }}
                   >
-                    <div className="flex items-center justify-center space-x-2 relative z-10">
-                      <Sparkles className="w-3 h-3" />
-                      <span>START TRANSFORMATION</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </div>
-                  </button>
+                    We turn strategy into unstoppable{' '}
+                    <span 
+                      className="font-semibold relative"
+                      style={{ 
+                        fontFamily: 'Space Grotesk, sans-serif',
+                        fontWeight: '600',
+                        color: '#D4AF37',
+                        textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
+                      }}
+                    >
+                      growth.
+                      <div className="absolute -top-1 -right-1 text-yellow-400 animate-pulse">
+                        <Sparkles className="w-3 h-3" />
+                      </div>
+                    </span>
+                  </p>
                 </div>
+              </div>
 
-                {/* Mobile Stats - Horizontal Layout */}
-                <div className="flex justify-center space-x-8 text-center">
-                  <div className="text-center group cursor-pointer">
-                    <div 
-                      className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
-                      style={{
-                        fontFamily: 'Orbitron, sans-serif',
-                        fontWeight: '900',
-                        textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                      }}
-                    >
-                      5<span style={{ color: '#D4AF37' }}>+</span>
-                    </div>
-                    <div 
-                      className="text-xs uppercase tracking-wider leading-tight"
+              {/* Bottom Elements Section - Show on Scroll */}
+              <div 
+                className={`fixed bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent pb-6 pt-12 z-30 transition-all duration-500 ${
+                  showBottomElements ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+                }`}
+              >
+                <div className="space-y-6">
+                  {/* Mobile START TRANSFORMATION Button */}
+                  <div className="flex justify-center">
+                    <button
+                      onClick={() => scrollToSection('contact')}
+                      className="group relative bg-transparent border-2 text-white px-6 py-3 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
                       style={{
                         fontFamily: 'Space Grotesk, sans-serif',
-                        fontWeight: '400',
+                        fontWeight: '600',
+                        fontSize: '0.8rem',
                         letterSpacing: '0.05em',
-                        color: '#B8860B'
+                        borderColor: '#D4AF37',
+                        boxShadow: '0 0 20px rgba(212, 175, 55, 0.2)'
+                      }}
+                      onTouchStart={(e) => {
+                        e.currentTarget.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
+                        e.currentTarget.style.color = '#0a0a0a';
+                        e.currentTarget.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.5)';
+                      }}
+                      onTouchEnd={(e) => {
+                        setTimeout(() => {
+                          e.currentTarget.style.background = 'transparent';
+                          e.currentTarget.style.color = '#ffffff';
+                          e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.2)';
+                        }, 100);
                       }}
                     >
-                      Projects
-                    </div>
+                      <div className="flex items-center justify-center space-x-2 relative z-10">
+                        <Sparkles className="w-3 h-3" />
+                        <span>START TRANSFORMATION</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </div>
+                    </button>
                   </div>
-                  
-                  <div className="text-center group cursor-pointer">
-                    <div 
-                      className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
-                      style={{
-                        fontFamily: 'Orbitron, sans-serif',
-                        fontWeight: '900',
-                        textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                      }}
-                    >
-                      100<span style={{ color: '#D4AF37' }}>%</span>
-                    </div>
-                    <div 
-                      className="text-xs uppercase tracking-wider leading-tight"
-                      style={{
-                        fontFamily: 'Space Grotesk, sans-serif',
-                        fontWeight: '400',
-                        letterSpacing: '0.05em',
-                        color: '#B8860B'
-                      }}
-                    >
-                      Satisfaction
-                    </div>
-                  </div>
-                  
-                  <div className="text-center group cursor-pointer">
-                    <div 
-                      className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
-                      style={{
-                        fontFamily: 'Orbitron, sans-serif',
-                        fontWeight: '900',
-                        textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                      }}
-                    >
-                      2025
-                    </div>
-                    <div 
-                      className="text-xs uppercase tracking-wider leading-tight"
-                      style={{
-                        fontFamily: 'Space Grotesk, sans-serif',
-                        fontWeight: '400',
-                        letterSpacing: '0.05em',
-                        color: '#B8860B'
-                      }}
-                    >
-                      Founded
-                    </div>
-                  </div>
-                </div>
 
-                {/* Mobile Scroll Arrow */}
-                <div className="flex justify-center">
-                  <div 
-                    className="cursor-pointer group inline-block relative" 
-                    onClick={() => scrollToSection('about')}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-lg opacity-20 group-active:opacity-40 transition-opacity duration-300" />
-                    <div className="relative bg-black/20 backdrop-blur-sm rounded-full p-2 border border-yellow-400/30 group-active:border-yellow-400/60 transition-all duration-300">
-                      <ChevronDown 
-                        className="w-5 h-5 transition-all duration-300 group-active:scale-125 animate-bounce"
-                        style={{ 
-                          color: '#B8860B',
-                          filter: 'drop-shadow(0 0 8px rgba(212, 175, 55, 0.5))'
+                  {/* Mobile Stats - Horizontal Layout */}
+                  <div className="flex justify-center space-x-8 text-center">
+                    <div className="text-center group cursor-pointer">
+                      <div 
+                        className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
+                        style={{
+                          fontFamily: 'Orbitron, sans-serif',
+                          fontWeight: '900',
+                          textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
                         }}
-                      />
+                      >
+                        5<span style={{ color: '#D4AF37' }}>+</span>
+                      </div>
+                      <div 
+                        className="text-xs uppercase tracking-wider leading-tight"
+                        style={{
+                          fontFamily: 'Space Grotesk, sans-serif',
+                          fontWeight: '400',
+                          letterSpacing: '0.05em',
+                          color: '#B8860B'
+                        }}
+                      >
+                        Projects
+                      </div>
+                    </div>
+                    
+                    <div className="text-center group cursor-pointer">
+                      <div 
+                        className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
+                        style={{
+                          fontFamily: 'Orbitron, sans-serif',
+                          fontWeight: '900',
+                          textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
+                        }}
+                      >
+                        100<span style={{ color: '#D4AF37' }}>%</span>
+                      </div>
+                      <div 
+                        className="text-xs uppercase tracking-wider leading-tight"
+                        style={{
+                          fontFamily: 'Space Grotesk, sans-serif',
+                          fontWeight: '400',
+                          letterSpacing: '0.05em',
+                          color: '#B8860B'
+                        }}
+                      >
+                        Satisfaction
+                      </div>
+                    </div>
+                    
+                    <div className="text-center group cursor-pointer">
+                      <div 
+                        className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
+                        style={{
+                          fontFamily: 'Orbitron, sans-serif',
+                          fontWeight: '900',
+                          textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
+                        }}
+                      >
+                        2025
+                      </div>
+                      <div 
+                        className="text-xs uppercase tracking-wider leading-tight"
+                        style={{
+                          fontFamily: 'Space Grotesk, sans-serif',
+                          fontWeight: '400',
+                          letterSpacing: '0.05em',
+                          color: '#B8860B'
+                        }}
+                      >
+                        Founded
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Mobile Scroll Arrow */}
+                  <div className="flex justify-center">
+                    <div 
+                      className="cursor-pointer group inline-block relative" 
+                      onClick={() => scrollToSection('about')}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-lg opacity-20 group-active:opacity-40 transition-opacity duration-300" />
+                      <div className="relative bg-black/20 backdrop-blur-sm rounded-full p-2 border border-yellow-400/30 group-active:border-yellow-400/60 transition-all duration-300">
+                        <ChevronDown 
+                          className="w-5 h-5 transition-all duration-300 group-active:scale-125 animate-bounce"
+                          style={{ 
+                            color: '#B8860B',
+                            filter: 'drop-shadow(0 0 8px rgba(212, 175, 55, 0.5))'
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
