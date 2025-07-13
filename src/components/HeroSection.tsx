@@ -468,33 +468,33 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 }`}
               >
                 <div className="space-y-6">
-                  {/* Mobile START TRANSFORMATION Button */}
+                  {/* Mobile START TRANSFORMATION Button - Reduced Size */}
                   <div className="flex justify-center">
                     <button
                       onClick={() => scrollToSection('contact')}
-                      className="group relative bg-transparent border-2 text-white px-6 py-3 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
+                      className="group relative bg-transparent border-2 text-white px-4 py-2 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
                       style={{
                         fontFamily: 'Space Grotesk, sans-serif',
                         fontWeight: '600',
-                        fontSize: '0.4rem',
-                        letterSpacing: '0.05em',
+                        fontSize: '0.7rem',
+                        letterSpacing: '0.03em',
                         borderColor: '#D4AF37',
-                        boxShadow: '0 0 20px rgba(212, 175, 55, 0.2)'
+                        boxShadow: '0 0 15px rgba(212, 175, 55, 0.2)'
                       }}
                       onTouchStart={(e) => {
                         e.currentTarget.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
                         e.currentTarget.style.color = '#0a0a0a';
-                        e.currentTarget.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.5)';
+                        e.currentTarget.style.boxShadow = '0 0 25px rgba(212, 175, 55, 0.5)';
                       }}
                       onTouchEnd={(e) => {
                         setTimeout(() => {
                           e.currentTarget.style.background = 'transparent';
                           e.currentTarget.style.color = '#ffffff';
-                          e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.2)';
+                          e.currentTarget.style.boxShadow = '0 0 15px rgba(212, 175, 55, 0.2)';
                         }, 100);
                       }}
                     >
-                      <div className="flex items-center justify-center space-x-2 relative z-10">
+                      <div className="flex items-center justify-center space-x-1.5 relative z-10">
                         <Sparkles className="w-3 h-3" />
                         <span>START TRANSFORMATION</span>
                         <ArrowRight className="w-3 h-3" />
