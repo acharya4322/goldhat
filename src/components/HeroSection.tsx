@@ -288,8 +288,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
               </div>
             </div>
 
-            {/* Mobile Layout - Inspired by Reference */}
-            <div className="md:hidden text-left px-4 py-8">
+            {/* Mobile Layout - Clean First Impression */}
+            <div className="md:hidden text-left px-4 py-8 flex flex-col justify-center min-h-screen">
               {/* Mobile Main Headline - Stacked Design */}
               <div className="mb-8 space-y-2">
                 <h1 className="text-5xl sm:text-6xl leading-none font-black tracking-tight">
@@ -315,7 +315,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                     JUST
                   </span>
                   
-                  {/* Highlighted word with orange background like reference */}
+                  {/* Fixed word "Amplify" with orange background */}
                   <div className="relative inline-block transform -rotate-3 mt-2">
                     <span 
                       className="block text-white font-black tracking-tight px-4 py-2 relative z-10"
@@ -328,7 +328,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         fontSize: '3rem'
                       }}
                     >
-                      {textRotation[currentText]}
+                      Amplify
                     </span>
                   </div>
                   
@@ -347,7 +347,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
 
               {/* Mobile subtitle */}
               <p 
-                className="text-sm leading-relaxed mb-8 max-w-xs opacity-90"
+                className="text-base leading-relaxed max-w-xs opacity-90"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
@@ -366,106 +366,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   growth.
                 </span>
               </p>
-
-              {/* Mobile CTA Button */}
-              <div className="mb-12">
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="group bg-transparent border-2 text-white px-8 py-4 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 relative overflow-hidden w-full sm:w-auto"
-                  style={{
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '600',
-                    fontSize: '0.9rem',
-                    letterSpacing: '0.05em',
-                    borderColor: '#FF4500'
-                  }}
-                  onTouchStart={(e) => {
-                    e.currentTarget.style.background = 'linear-gradient(135deg, #FF4500, #FF6B35)';
-                    e.currentTarget.style.color = '#ffffff';
-                  }}
-                  onTouchEnd={(e) => {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.color = '#ffffff';
-                  }}
-                >
-                  <div className="flex items-center justify-center space-x-2 relative z-10">
-                    <span>START TRANSFORMATION</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </div>
-                </button>
-              </div>
-
-              {/* Mobile Stats - Horizontal Layout */}
-              <div className="flex justify-between items-center border-t border-gray-800 pt-6">
-                <div className="text-center">
-                  <div 
-                    className="text-white text-2xl font-black"
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontWeight: '900'
-                    }}
-                  >
-                    5<span style={{ color: '#FF4500' }}>+</span>
-                  </div>
-                  <div 
-                    className="text-xs uppercase tracking-wider"
-                    style={{
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      fontWeight: '400',
-                      letterSpacing: '0.1em',
-                      color: '#999'
-                    }}
-                  >
-                    Projects
-                  </div>
-                </div>
-                
-                <div className="text-center">
-                  <div 
-                    className="text-white text-2xl font-black"
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontWeight: '900'
-                    }}
-                  >
-                    100<span style={{ color: '#FF4500' }}>%</span>
-                  </div>
-                  <div 
-                    className="text-xs uppercase tracking-wider"
-                    style={{
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      fontWeight: '400',
-                      letterSpacing: '0.1em',
-                      color: '#999'
-                    }}
-                  >
-                    Satisfaction
-                  </div>
-                </div>
-                
-                <div className="text-center">
-                  <div 
-                    className="text-white text-2xl font-black"
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontWeight: '900'
-                    }}
-                  >
-                    2025
-                  </div>
-                  <div 
-                    className="text-xs uppercase tracking-wider"
-                    style={{
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      fontWeight: '400',
-                      letterSpacing: '0.1em',
-                      color: '#999'
-                    }}
-                  >
-                    Founded
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
