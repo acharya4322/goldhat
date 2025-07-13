@@ -101,7 +101,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
             style={{
               fontFamily: 'Space Grotesk, sans-serif',
               fontWeight: '600',
-              fontSize: '1rem',
+              fontSize: '0.9rem',
               letterSpacing: '0.05em',
               borderColor: '#D4AF37'
             }}
@@ -126,7 +126,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           <div className="text-right space-y-4">
             <div className="text-right">
               <div 
-                className="text-white text-4xl sm:text-5xl md:text-6xl font-black"
+                className="text-white text-3xl sm:text-4xl md:text-5xl font-black"
                 style={{
                   fontFamily: 'Inter, sans-serif',
                   fontWeight: '900'
@@ -135,7 +135,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 5<span style={{ color: '#D4AF37' }}>+</span>
               </div>
               <div 
-                className="text-sm sm:text-base uppercase tracking-wider"
+                className="text-xs sm:text-sm uppercase tracking-wider"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
@@ -149,7 +149,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
             
             <div className="text-right">
               <div 
-                className="text-white text-4xl sm:text-5xl md:text-6xl font-black"
+                className="text-white text-3xl sm:text-4xl md:text-5xl font-black"
                 style={{
                   fontFamily: 'Inter, sans-serif',
                   fontWeight: '900'
@@ -158,7 +158,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 100<span style={{ color: '#D4AF37' }}>%</span>
               </div>
               <div 
-                className="text-sm sm:text-base uppercase tracking-wider"
+                className="text-xs sm:text-sm uppercase tracking-wider"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
@@ -172,7 +172,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
             
             <div className="text-right">
               <div 
-                className="text-white text-4xl sm:text-5xl md:text-6xl font-black"
+                className="text-white text-3xl sm:text-4xl md:text-5xl font-black"
                 style={{
                   fontFamily: 'Inter, sans-serif',
                   fontWeight: '900'
@@ -181,7 +181,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 2025
               </div>
               <div 
-                className="text-sm sm:text-base uppercase tracking-wider"
+                className="text-xs sm:text-sm uppercase tracking-wider"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
@@ -205,7 +205,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
             {/* Desktop Layout */}
             <div className="hidden md:block text-center">
               {/* Main Headline with Desktop Typography */}
-              <h1 className="text-8xl lg:text-9xl xl:text-[10rem] 2xl:text-[12rem] mb-8 sm:mb-10 leading-tight">
+              <h1 className="text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-6 sm:mb-8 leading-tight">
                 <span 
                   className="block text-white tracking-tight font-black"
                   style={{ 
@@ -247,7 +247,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
 
               {/* Desktop subtitle */}
               <p 
-                className="text-2xl lg:text-3xl mb-16 max-w-3xl mx-auto leading-relaxed"
+                className="text-xl lg:text-2xl mb-16 max-w-3xl mx-auto leading-relaxed"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
@@ -273,7 +273,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 onClick={() => scrollToSection('about')}
               >
                 <ChevronDown 
-                  className="w-10 h-10 transition-all duration-300 group-hover:scale-125 animate-bounce"
+                  className="w-8 h-8 transition-all duration-300 group-hover:scale-125 animate-bounce"
                   style={{ 
                     color: '#B8860B',
                     transition: 'all 0.3s ease'
@@ -291,8 +291,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
             {/* Mobile Layout - Clean First Impression */}
             <div className="md:hidden text-left px-4 py-8 flex flex-col justify-center min-h-screen">
               {/* Mobile Main Headline - Stacked Design */}
-              <div className="mb-10 space-y-3">
-                <h1 className="text-6xl sm:text-7xl leading-none font-black tracking-tight">
+              <div className="mb-8 space-y-2">
+                <h1 className="text-5xl sm:text-6xl leading-none font-black tracking-tight">
                   <span 
                     className="block text-white"
                     style={{ 
@@ -316,7 +316,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   </span>
                   
                   {/* Fixed word "Amplify" with orange background */}
-                  <div className="relative inline-block transform -rotate-3 mt-3">
+                  <div className="relative inline-block transform -rotate-3 mt-2">
                     <span 
                       className="block text-white font-black tracking-tight px-4 py-2 relative z-10"
                       style={{ 
@@ -325,7 +325,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         letterSpacing: '-0.03em',
                         background: 'linear-gradient(135deg, #FF4500 0%, #FF6B35 50%, #FF8C42 100%)',
                         boxShadow: '0 8px 32px rgba(255, 69, 0, 0.4)',
-                        fontSize: '3.5rem'
+                        fontSize: '3rem'
                       }}
                     >
                       Amplify
@@ -333,7 +333,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   </div>
                   
                   <span 
-                    className="block text-white mt-3"
+                    className="block text-white mt-2"
                     style={{ 
                       fontFamily: 'Inter, sans-serif',
                       fontWeight: '900',
@@ -347,7 +347,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
 
               {/* Mobile subtitle */}
               <p 
-                className="text-lg leading-relaxed max-w-sm opacity-90"
+                className="text-base leading-relaxed max-w-xs opacity-90"
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
