@@ -97,6 +97,19 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
             >
               Digital alchemists transforming brands into{' '}
               <span className="text-amber-500 font-semibold">golden legends</span>
+              {' '}
+              <button
+                onClick={() => setShowMore(!showMore)}
+                className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full border transition-all duration-300 ${
+                  darkMode
+                    ? 'border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-black'
+                    : 'border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white'
+                }`}
+                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}
+              >
+                <span>{showMore ? 'Show Less' : 'Learn More'}</span>
+                {showMore ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+              </button>
             </p>
           </div>
 
@@ -132,19 +145,6 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
                 </p>
               </div>
             </div>
-            
-            <button
-              onClick={() => setShowMore(!showMore)}
-              className={`inline-flex items-center space-x-2 mt-6 px-6 py-2 rounded-full border transition-all duration-300 ${
-                darkMode
-                  ? 'border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-black'
-                  : 'border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white'
-              }`}
-              style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}
-            >
-              <span>{showMore ? 'Show Less' : 'Learn More'}</span>
-              {showMore ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-            </button>
           </div>
 
           {/* Services */}
@@ -289,7 +289,6 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
               </div>
             </div>
           </div>
-          
 
         </div>
       </section>
