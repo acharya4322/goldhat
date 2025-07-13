@@ -368,8 +368,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
             </div>
 
             {/* Enhanced Mobile Layout */}
-            <div className="md:hidden text-center px-4 py-8 flex flex-col justify-center items-center min-h-screen">
-              <div className="mb-24 space-y-2">
+            <div className="md:hidden text-center px-4 py-8 flex flex-col justify-between items-center min-h-screen">
+              <div className="mb-24 space-y-2 flex-shrink-0">
                 <h1 className="text-6xl sm:text-7xl leading-none font-black tracking-tight">
                   <span 
                     className="block text-white"
@@ -429,28 +429,30 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
               </div>
 
               {/* Enhanced Mobile subtitle - REDUCED FONT SIZE */}
-              <p 
-                className="text-sm sm:text-base leading-relaxed max-w-md mx-auto opacity-90 text-center"
-                style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '400',
-                  color: '#B8B8B8',
-                  textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
-                }}
-              >
-                We turn strategy into unstoppable{' '}
-                <span 
-                  className="font-semibold relative"
-                  style={{ 
+              <div className="flex-shrink-0 mb-8">
+                <p 
+                  className="text-sm sm:text-base leading-relaxed max-w-md mx-auto opacity-90 text-center"
+                  style={{
                     fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '600',
-                    color: '#D4AF37',
-                    textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
+                    fontWeight: '400',
+                    color: '#B8B8B8',
+                    textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
                   }}
                 >
-                  growth.
-                </span>
-              </p>
+                  We turn strategy into unstoppable{' '}
+                  <span 
+                    className="font-semibold relative"
+                    style={{ 
+                      fontFamily: 'Space Grotesk, sans-serif',
+                      fontWeight: '600',
+                      color: '#D4AF37',
+                      textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
+                    }}
+                  >
+                    growth.
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
