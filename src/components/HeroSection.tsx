@@ -406,7 +406,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         letterSpacing: '-0.03em',
                         background: 'linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%)',
                         boxShadow: '0 8px 32px rgba(212, 175, 55, 0.4), 0 0 40px rgba(255, 215, 0, 0.3)',
-                        fontSize: '3.5rem',
+                        fontSize: '5.5rem',
                         textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
                       }}
                     >
