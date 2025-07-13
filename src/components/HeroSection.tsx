@@ -322,8 +322,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
-                  color: '#E6E6E6',
-                  textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)'
+                  color: '#B8B8B8',
+                  textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
                 }}
               >
                 We turn strategy into unstoppable 
@@ -333,7 +333,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontWeight: '600',
                     color: '#D4AF37',
-                    textShadow: '0 0 20px rgba(212, 175, 55, 0.5)'
+                    textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
                   }}
                 > 
                   growth.
@@ -434,8 +434,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
-                  color: '#E6E6E6',
-                  textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)'
+                  color: '#B8B8B8',
+                  textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
                 }}
               >
                 We turn strategy into unstoppable{' '}
@@ -445,34 +445,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontWeight: '600',
                     color: '#D4AF37',
-                    textShadow: '0 0 15px rgba(212, 175, 55, 0.5)'
+                    textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
                   }}
                 >
                   growth.
-                  <div className="absolute -top-1 -right-1 text-yellow-400 animate-pulse">
-                    <Sparkles className="w-3 h-3" />
-                  </div>
                 </span>
               </p>
-
-              {/* Mobile CTA Button */}
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="mt-8 bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-500 hover:to-orange-500 text-black font-bold py-3 px-8 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg"
-                style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '600',
-                  fontSize: '0.9rem',
-                  letterSpacing: '0.05em',
-                  boxShadow: '0 8px 25px rgba(212, 175, 55, 0.4)'
-                }}
-              >
-                <div className="flex items-center space-x-2">
-                  <Sparkles className="w-4 h-4" />
-                  <span>Get Started</span>
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </button>
             </div>
           </div>
         </div>
