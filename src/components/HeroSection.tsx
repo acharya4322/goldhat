@@ -15,6 +15,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
   const [isVisible, setIsVisible] = useState(false);
   const [currentText, setCurrentText] = useState(0);
   const [particles, setParticles] = useState([]);
+  const [showMobileElements, setShowMobileElements] = useState(false);
 
   const textRotation = [
     "Transform",
@@ -47,7 +48,25 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
 
     generateParticles();
 
-    return () => clearInterval(interval);
+    // Mobile scroll handler
+    const handleScroll = () => {
+      if (window.innerWidth < 768) { // Only on mobile
+        const scrollY = window.scrollY;
+        const threshold = 100; // Show elements after 100px of scroll
+        setShowMobileElements(scrollY > threshold);
+      }
+    };
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Initial check
+    handleScroll();
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -204,7 +223,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
         </div>
 
         {/* Mobile Bottom Left - START TRANSFORMATION Button */}
-        <div className="absolute bottom-6 left-4 z-20 md:hidden">
+        <div className={`absolute bottom-6 left-4 z-20 md:hidden transition-all duration-500 ${
+          showMobileElements ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}>
           <button
             onClick={() => scrollToSection('contact')}
             className="group relative bg-transparent border-2 text-white px-4 py-3 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
@@ -316,7 +337,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
         </div>
 
         {/* Mobile Bottom Right - Stats */}
-        <div className="absolute bottom-6 right-4 z-20 md:hidden">
+        <div className={`absolute bottom-6 right-4 z-20 md:hidden transition-all duration-500 ${
+          showMobileElements ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}>
           <div className="text-right space-y-4">
             <div className="text-right group cursor-pointer">
               <div 
