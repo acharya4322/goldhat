@@ -335,4 +335,4 @@ const Navbar: React.FC<NavbarProps> = ({
   );
 };
 
-export default Navba
+export default Navbar;
