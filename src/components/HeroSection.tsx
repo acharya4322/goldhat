@@ -338,8 +338,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: '400',
                   color: '#B8B8B8',
-                  textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)',
-                  fontSize: '1'
+                  textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
                 }}
               >
                 We Don't Just Transform Your Brand, We turn strategy into unstoppable 
@@ -399,7 +398,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         fontSize: '3.5rem',
                       }}
                     >
-                      WE DON'T JUST
+                       Building
                     </span>
                     
                     {/* Enhanced mobile word */}
@@ -431,7 +430,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         fontSize: '3.5rem',
                       }}
                     >
-                      YOUR BRAND
+                      Scaling
                     </span>
                   </h1>
 
@@ -445,7 +444,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                       textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
                     }}
                   >
-                    We turn strategy into unstoppable{' '}
+                    We Don't Just Transform Your Brand, We turn strategy into unstoppable{' '}
                     <span 
                       className="font-semibold relative"
                       style={{ 
