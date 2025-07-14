@@ -4,26 +4,20 @@ import {
   X,
   Crown,
   Zap,
-  Sun,
-  Moon,
   Sparkles,
   ChevronDown
 } from 'lucide-react';
 
 type NavbarProps = {
-  darkMode: boolean;
   isMenuOpen: boolean;
   setIsMenuOpen: (value: boolean) => void;
-  toggleDarkMode: () => void;
   scrolled: boolean;
   scrollToSection: (id: string) => void;
 };
 
 const Navbar: React.FC<NavbarProps> = ({
-  darkMode,
   isMenuOpen,
   setIsMenuOpen,
-  toggleDarkMode,
   scrolled,
   scrollToSection
 }) => {
@@ -128,27 +122,6 @@ const Navbar: React.FC<NavbarProps> = ({
                 </div>
               ))}
               
-              {/* Dark Mode Toggle - Hero Section Style */}
-              <button 
-                onClick={toggleDarkMode}
-                className="relative p-2.5 lg:p-3 rounded-xl transition-all duration-300 group overflow-hidden hover:scale-110"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(26, 22, 17, 0.8) 0%, rgba(15, 15, 15, 0.8) 100%)',
-                  color: darkMode ? '#D4AF37' : '#B8860B',
-                  boxShadow: '0 0 20px rgba(212, 175, 55, 0.2)',
-                  border: '1px solid rgba(212, 175, 55, 0.3)'
-                }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  {darkMode ? (
-                    <Sun className="w-4 h-4 lg:w-5 lg:h-5 rotate-0 group-hover:rotate-180 transition-transform duration-500" />
-                  ) : (
-                    <Moon className="w-4 h-4 lg:w-5 lg:h-5 rotate-0 group-hover:-rotate-12 transition-transform duration-300" />
-                  )}
-                </div>
-              </button>
-              
               {/* CTA Button - Hero Section Style */}
               <button
                 onClick={() => scrollToSection('contact')}
@@ -181,18 +154,6 @@ const Navbar: React.FC<NavbarProps> = ({
 
             {/* Mobile Menu Toggle - Hero Section Style */}
             <div className="lg:hidden flex items-center space-x-2 sm:space-x-3">
-              <button 
-                onClick={toggleDarkMode}
-                className="p-2 sm:p-2.5 rounded-xl transition-all duration-300 hover:scale-110 active:scale-95 touch-manipulation"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(26, 22, 17, 0.8) 0%, rgba(15, 15, 15, 0.8) 100%)',
-                  color: darkMode ? '#D4AF37' : '#B8860B',
-                  boxShadow: '0 0 15px rgba(212, 175, 55, 0.2)',
-                  border: '1px solid rgba(212, 175, 55, 0.3)'
-                }}
-              >
-                {darkMode ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
-              </button>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 sm:p-2.5 rounded-xl transition-all duration-300 hover:scale-110 active:scale-95 touch-manipulation text-gray-300 hover:text-white"

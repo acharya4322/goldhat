@@ -13,7 +13,6 @@ function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
   const [activeFilter, setActiveFilter] = useState('All');
 
   useEffect(() => {
@@ -30,7 +29,6 @@ function App() {
     setIsMenuOpen(false);
   };
 
-  const toggleDarkMode = () => setDarkMode(!darkMode);
 
   const handleSplashComplete = () => {
     setShowSplash(false);
@@ -41,21 +39,19 @@ function App() {
   }
 
   return (
-    <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+    <div className="min-h-screen transition-all duration-500 bg-gray-900 text-white">
       <Navbar
-        darkMode={darkMode}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
-        toggleDarkMode={toggleDarkMode}
         scrolled={scrolled}
         scrollToSection={scrollToSection}
       />
-      <HeroSection darkMode={darkMode} scrollToSection={scrollToSection} />
-      <AboutSection darkMode={darkMode} />
-      <ServicesSection darkMode={darkMode} />
-      <PortfolioSection darkMode={darkMode} activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
-      <ContactSection darkMode={darkMode} />
-      <Footer darkMode={darkMode} />
+      <HeroSection darkMode={true} scrollToSection={scrollToSection} />
+      <AboutSection darkMode={true} />
+      <ServicesSection darkMode={true} />
+      <PortfolioSection darkMode={true} activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
+      <ContactSection darkMode={true} />
+      <Footer darkMode={true} />
     </div>
   );
 }
