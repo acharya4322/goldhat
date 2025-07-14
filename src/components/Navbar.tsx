@@ -318,7 +318,13 @@ const Navbar: React.FC<NavbarProps> = ({
         }
         
         .animate-marquee {
-          animation: marquee 35s linear infinite;
+          animation: marquee 25s linear infinite;
+        }
+        
+        @media (max-width: 768px) {
+          .animate-marquee {
+            animation: marquee 20s linear infinite;
+          }
         }
         
         .animate-marquee:hover {
