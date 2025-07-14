@@ -96,7 +96,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
             {/* Desktop Navigation - Hero Section Style */}
             <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-              {['home', 'about', 'services', 'portfolio', 'testimonials', 'blog'].map((section, index) => (
+              {['home', 'about', 'services', 'portfolio', 'contact'].map((section, index) => (
                 <div key={section} className="relative">
                   <button
                     onClick={() => scrollToSection(section)}
@@ -222,7 +222,7 @@ const Navbar: React.FC<NavbarProps> = ({
                    boxShadow: '0 0 40px rgba(212, 175, 55, 0.2)'
                  }}>
               <div className="p-4 sm:p-6 space-y-1">
-                {['home', 'about', 'services', 'portfolio', 'testimonials', 'blog'].map((section, index) => (
+                {['home', 'about', 'services', 'portfolio', 'contact'].map((section, index) => (
                   <button
                     key={section}
                     onClick={() => {

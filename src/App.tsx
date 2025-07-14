@@ -6,8 +6,6 @@ import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import ServicesSection from './components/ServicesSection';
 import PortfolioSection from './components/PortfolioSection';
-import TestimonialsSection from './components/TestimonialsSection';
-import BlogSection from './components/BlogSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
@@ -56,8 +54,6 @@ function App() {
       <AboutSection darkMode={darkMode} />
       <ServicesSection darkMode={darkMode} />
       <PortfolioSection darkMode={darkMode} activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
-      <TestimonialsSection darkMode={darkMode} />
-      <BlogSection darkMode={darkMode} />
       <ContactSection darkMode={darkMode} />
       <Footer darkMode={darkMode} />
     </div>
