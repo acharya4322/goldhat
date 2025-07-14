@@ -24,13 +24,24 @@ const Navbar: React.FC<NavbarProps> = ({
   const navItemClass = `text-gray-300 hover:text-white transition-all duration-300 font-medium px-3 lg:px-4 py-2 rounded-xl relative group`;
 
   const tickerMessages = [
-    "🚀 GOLDHAT is transforming brands into golden legends across the globe",
-    "✨ New client success: 500% ROAS achieved with our Meta Ads strategy",
-    "🏆 Award-winning web development and mobile app solutions now available",
-    "💎 Think Gold. Act Bold. - Your brand transformation starts here",
-    "🔥 Limited spots available for Q1 2025 marketing campaigns",
-    "⚡ From startups to enterprises - we make every brand shine like gold",
-    "🎯 Expert team ready to scale your business to new heights"
+    "🚀 BRAND TRANSFORMATION",
+    "✨ DIGITAL MARKETING",
+    "🏆 WEB DEVELOPMENT",
+    "💎 MOBILE APPS",
+    "🔥 META ADS",
+    "⚡ GOOGLE ADS",
+    "🎯 SEO OPTIMIZATION",
+    "💰 LEAD GENERATION",
+    "🌟 SOCIAL MEDIA",
+    "🎨 GRAPHIC DESIGN",
+    "📱 APP DEVELOPMENT",
+    "🚀 GROWTH HACKING",
+    "✨ CONTENT STRATEGY",
+    "🏆 CONVERSION OPTIMIZATION",
+    "💎 BRAND IDENTITY",
+    "🔥 PERFORMANCE MARKETING",
+    "⚡ THINK GOLD. ACT BOLD.",
+    "🎯 SCALING SUCCESS"
   ];
   return (
     <>
