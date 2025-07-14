@@ -1,5 +1,6 @@
 // src/App.tsx
 import React, { useState, useEffect } from 'react';
+import SplashScreen from './components/SplashScreen';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
@@ -11,6 +12,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
@@ -31,6 +33,14 @@ function App() {
   };
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
+
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+  };
+
+  if (showSplash) {
+    return <SplashScreen onComplete={handleSplashComplete} />;
+  }
 
   return (
     <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
