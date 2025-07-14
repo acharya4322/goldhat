@@ -164,37 +164,67 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
           />
         </div>
 
-        {/* Desktop Bottom Left - Enhanced START TRANSFORMATION Button */}
+        {/* Desktop Bottom Left - Enhanced with Text Above Button */}
         <div className="absolute bottom-6 left-6 z-20 hidden md:block">
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="group relative bg-transparent border-2 text-white px-8 py-4 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden"
-            style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontWeight: '600',
-              fontSize: '0.9rem',
-              letterSpacing: '0.05em',
-              borderColor: '#D4AF37',
-              boxShadow: '0 0 30px rgba(212, 175, 55, 0.2)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
-              e.currentTarget.style.color = '#0a0a0a';
-              e.currentTarget.style.boxShadow = '0 0 50px rgba(212, 175, 55, 0.5)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.color = '#ffffff';
-              e.currentTarget.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.2)';
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-700" />
-            <div className="flex items-center justify-center space-x-2 relative z-10">
-              <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-              <span>START TRANSFORMATION</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </div>
-          </button>
+          <div className="space-y-4">
+            {/* Text above button */}
+            <p 
+              className="text-lg max-w-md leading-relaxed"
+              style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontWeight: '400',
+                color: '#B8B8B8',
+                textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
+              }}
+            >
+              We Don't Just Transform Your Brand, We turn strategy into unstoppable 
+              <span 
+                className="font-semibold ml-2 relative"
+                style={{ 
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontWeight: '600',
+                  color: '#D4AF37',
+                  textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
+                }}
+              > 
+                growth.
+                <div className="absolute -top-1 -right-1 text-yellow-400 animate-pulse">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+              </span>
+            </p>
+
+            {/* Button */}
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="group relative bg-transparent border-2 text-white px-8 py-4 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden"
+              style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontWeight: '600',
+                fontSize: '0.9rem',
+                letterSpacing: '0.05em',
+                borderColor: '#D4AF37',
+                boxShadow: '0 0 30px rgba(212, 175, 55, 0.2)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
+                e.currentTarget.style.color = '#0a0a0a';
+                e.currentTarget.style.boxShadow = '0 0 50px rgba(212, 175, 55, 0.5)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = '#ffffff';
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.2)';
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-700" />
+              <div className="flex items-center justify-center space-x-2 relative z-10">
+                <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+                <span>START TRANSFORMATION</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Desktop Bottom Right - Enhanced Stats */}
@@ -331,33 +361,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 </span>
               </h1>
 
-              {/* Enhanced Desktop subtitle */}
-              <p 
-                className="text-xl lg:text-2xl mb-16 max-w-3xl mx-auto leading-relaxed"
-                style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '400',
-                  color: '#B8B8B8',
-                  textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
-                }}
-              >
-                We Don't Just Transform Your Brand, We turn strategy into unstoppable 
-                <span 
-                  className="font-semibold ml-2 relative"
-                  style={{ 
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '600',
-                    color: '#D4AF37',
-                    textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                  }}
-                > 
-                  growth.
-                  <div className="absolute -top-1 -right-1 text-yellow-400 animate-pulse">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                </span>
-              </p>
-
               {/* Enhanced Desktop scroll indicator */}
               <div 
                 className="cursor-pointer group inline-block relative" 
@@ -433,33 +436,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                       Scaling
                     </span>
                   </h1>
-
-                  {/* Modified Mobile subtitle - Much smaller font */}
-                  <p 
-                    className="text-xs leading-tight max-w-xs mx-auto opacity-90 text-center mt-6"
-                    style={{
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      fontWeight: '400',
-                      color: '#B8B8B8',
-                      textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
-                    }}
-                  >
-                    We Don't Just Transform Your Brand, We turn strategy into unstoppable{' '}
-                    <span 
-                      className="font-semibold relative"
-                      style={{ 
-                        fontFamily: 'Space Grotesk, sans-serif',
-                        fontWeight: '600',
-                        color: '#D4AF37',
-                        textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                      }}
-                    >
-                      growth.
-                      <div className="absolute -top-1 -right-1 text-yellow-400 animate-pulse">
-                        <Sparkles className="w-2 h-2" />
-                      </div>
-                    </span>
-                  </p>
                 </div>
               </div>
 
@@ -470,7 +446,36 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 }`}
               >
                 <div className="space-y-6">
-                  {/* Mobile START TRANSFORMATION Button - Half Size */}
+                  {/* Text above mobile button */}
+                  <div className="flex justify-center px-4">
+                    <p 
+                      className="text-xs leading-tight max-w-xs text-center opacity-90"
+                      style={{
+                        fontFamily: 'Space Grotesk, sans-serif',
+                        fontWeight: '400',
+                        color: '#B8B8B8',
+                        textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
+                      }}
+                    >
+                      We Don't Just Transform Your Brand, We turn strategy into unstoppable{' '}
+                      <span 
+                        className="font-semibold relative"
+                        style={{ 
+                          fontFamily: 'Space Grotesk, sans-serif',
+                          fontWeight: '600',
+                          color: '#D4AF37',
+                          textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
+                        }}
+                      >
+                        growth.
+                        <div className="absolute -top-1 -right-1 text-yellow-400 animate-pulse">
+                          <Sparkles className="w-2 h-2" />
+                        </div>
+                      </span>
+                    </p>
+                  </div>
+
+                  {/* Mobile START TRANSFORMATION Button */}
                   <div className="flex justify-center">
                     <button
                       onClick={() => scrollToSection('contact')}
@@ -578,8 +583,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                       </div>
                     </div>
                   </div>
-
-                  {/* Mobile Scroll Arrow - REMOVED */}
                 </div>
               </div>
             </div>
