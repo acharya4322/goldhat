@@ -480,11 +480,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         fontWeight: '600',
                         fontSize: '1.0rem',
                         letterSpacing: '0.02em',
-                        borderColor: '#D4AF37',
-                        boxShadow: '0 0 10px rgba(212, 175, 55, 0.2)'
+                       // borderColor: '#D4AF37',
+                      //  boxShadow: '0 0 10px rgba(212, 175, 55, 0.2)'
                       }}
                       onTouchStart={(e) => {
-                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
                         e.currentTarget.style.color = '#0a0a0a';
                         e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.5)';
                       }}
