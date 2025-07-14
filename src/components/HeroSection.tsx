@@ -439,15 +439,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 </div>
               </div>
 
-              {/* Bottom Elements Section - Show on Scroll */}
+              {/* Bottom Elements Section - Fixed Container Width */}
               <div 
-                className={`fixed bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent pb-6 pt-12 z-30 transition-all duration-500 ${
+                className={`fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-sm bg-gradient-to-t from-black via-black/80 to-transparent pb-6 pt-12 z-30 transition-all duration-500 ${
                   showBottomElements ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
                 }`}
               >
-                <div className="space-y-6">
+                <div className="px-4 space-y-6">
                   {/* Text above mobile button */}
-                  <div className="flex justify-center px-4">
+                  <div className="flex justify-center">
                     <p 
                       className="text-xs leading-tight max-w-xs text-center opacity-90"
                       style={{
@@ -479,11 +479,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   <div className="flex justify-center">
                     <button
                       onClick={() => scrollToSection('contact')}
-                      className="group relative bg-transparent border-2 text-white px-2 py-1 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
+                      className="group relative bg-transparent border-2 text-white px-6 py-3 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
                       style={{
                         fontFamily: 'Space Grotesk, sans-serif',
                         fontWeight: '600',
-                        fontSize: '1.3rem',
+                        fontSize: '0.75rem',
                         letterSpacing: '0.02em',
                         borderColor: '#D4AF37',
                         boxShadow: '0 0 10px rgba(212, 175, 55, 0.2)'
@@ -501,10 +501,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                         }, 100);
                       }}
                     >
-                      <div className="flex items-center justify-center space-x-1 relative z-10">
-                        <Sparkles className="w-2.5 h-2.5" />
+                      <div className="flex items-center justify-center space-x-2 relative z-10">
+                        <Sparkles className="w-3 h-3" />
                         <span>START TRANSFORMATION</span>
-                        <ArrowRight className="w-2.5 h-2.5" />
+                        <ArrowRight className="w-3 h-3" />
                       </div>
                     </button>
                   </div>
