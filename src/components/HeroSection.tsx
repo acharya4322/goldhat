@@ -51,7 +51,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
     // Mobile scroll handler
     const handleScroll = () => {
       if (window.innerWidth < 768) { // Only for mobile
-        const scrollThreshold = window.innerHeight * 0.3; // Show after 30% scroll
+        const scrollThreshold = window.innerHeight * 0.1; // Show after 10% scroll
         setShowBottomElements(window.scrollY > scrollThreshold);
       }
     };
