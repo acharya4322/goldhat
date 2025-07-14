@@ -439,17 +439,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 </div>
               </div>
 
-              {/* Bottom Elements Section - Full Width */}
+              {/* Bottom Elements Section - Fixed Independent Width */}
               <div 
-                className={`fixed bottom-0 left-0 right-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent pb-6 pt-12 z-30 transition-all duration-500 ${
+                className={`fixed bottom-0 left-1/2 transform -translate-x-1/2 bg-gradient-to-t from-black via-black/80 to-transparent pb-6 pt-12 z-30 transition-all duration-500 ${
                   showBottomElements ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
                 }`}
+                style={{ width: '520px' }}
               >
-                <div className="px-4 space-y-6 max-w-sm mx-auto">
+                <div className="px-4 space-y-6">
                   {/* Text above mobile button */}
                   <div className="flex justify-center">
                     <p 
-                      className="text-xs leading-tight text-center opacity-90"
+                      className="text-xs leading-tight max-w-xs text-center opacity-90"
                       style={{
                         fontFamily: 'Space Grotesk, sans-serif',
                         fontWeight: '400',
