@@ -18,9 +18,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
   const [showBottomElements, setShowBottomElements] = useState(false);
 
   const textRotation = [
-    "Transform",
-    "Elevate", 
-    "Amplify"
+    "Marketing",
+    "Advertising", 
+    "Branding"
   ];
 
   useEffect(() => {
@@ -294,7 +294,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                     textShadow: '0 0 40px rgba(255, 255, 255, 0.1)'
                   }}
                 >
-                  We Don't Just
+                  Building
                 </span>
                 
                 {/* Enhanced rotating word with better effects */}
@@ -327,7 +327,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                     textShadow: '0 0 40px rgba(255, 255, 255, 0.1)'
                   }}
                 >
-                  Your Brand
+                  Scaling
                 </span>
               </h1>
 
@@ -341,7 +341,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                   textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
                 }}
               >
-                We turn strategy into unstoppable 
+                We Don't Just Transform Your Brand, We turn strategy into unstoppable 
                 <span 
                   className="font-semibold ml-2 relative"
                   style={{ 
