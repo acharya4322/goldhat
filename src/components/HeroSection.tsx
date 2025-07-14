@@ -526,7 +526,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                           color: '#B8860B'
                         }}
                       >
-                        Projects
+                        Projectsz
                       </div>
                     </div>
                     
