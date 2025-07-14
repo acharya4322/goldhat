@@ -101,7 +101,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
       <section 
         ref={aboutRef}
         id="about" 
-        className="relative py-20 overflow-hidden"
+        className="relative py-20 overflow-hidden pt-24"
         style={{
           background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1611 50%, #0f0f0f 100%)'
         }}

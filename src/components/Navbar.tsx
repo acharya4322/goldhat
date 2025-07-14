@@ -23,6 +23,15 @@ const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const navItemClass = `text-gray-300 hover:text-white transition-all duration-300 font-medium px-3 lg:px-4 py-2 rounded-xl relative group`;
 
+  const tickerMessages = [
+    "🚀 GOLDHAT is transforming brands into golden legends across the globe",
+    "✨ New client success: 500% ROAS achieved with our Meta Ads strategy",
+    "🏆 Award-winning web development and mobile app solutions now available",
+    "💎 Think Gold. Act Bold. - Your brand transformation starts here",
+    "🔥 Limited spots available for Q1 2025 marketing campaigns",
+    "⚡ From startups to enterprises - we make every brand shine like gold",
+    "🎯 Expert team ready to scale your business to new heights"
+  ];
   return (
     <>
       {/* Google Fonts Import */}
@@ -31,12 +40,67 @@ const Navbar: React.FC<NavbarProps> = ({
         rel="stylesheet" 
       />
       
+      {/* News Ticker */}
+      <div className="fixed top-0 w-full z-[60] overflow-hidden"
+           style={{
+             background: 'linear-gradient(90deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%)',
+             height: '32px'
+           }}>
+        <div className="flex items-center h-full">
+          {/* Breaking News Label */}
+          <div className="flex-shrink-0 px-4 py-1 text-black font-bold text-xs uppercase tracking-wider border-r-2 border-black/20"
+               style={{
+                 fontFamily: 'Space Grotesk, sans-serif',
+                 fontWeight: '700',
+                 background: 'rgba(0, 0, 0, 0.1)',
+                 textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
+               }}>
+            🔥 GOLDHAT NEWS
+          </div>
+          
+          {/* Moving Text Container */}
+          <div className="flex-1 overflow-hidden relative">
+            <div className="flex animate-marquee whitespace-nowrap">
+              {/* First set of messages */}
+              {tickerMessages.map((message, index) => (
+                <span
+                  key={`first-${index}`}
+                  className="inline-block px-8 py-1 text-black font-medium text-sm"
+                  style={{
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontWeight: '500',
+                    textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
+                  }}
+                >
+                  {message}
+                </span>
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {tickerMessages.map((message, index) => (
+                <span
+                  key={`second-${index}`}
+                  className="inline-block px-8 py-1 text-black font-medium text-sm"
+                  style={{
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontWeight: '500',
+                    textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
+                  }}
+                >
+                  {message}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <nav className={`fixed w-full z-50 transition-all duration-500 ${
         scrolled 
           ? 'backdrop-blur-xl shadow-2xl border-b border-yellow-500/20' 
           : 'bg-transparent'
       }`}
       style={{
+        top: '32px', // Account for ticker height
         background: scrolled 
           ? 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 22, 17, 0.95) 50%, rgba(15, 15, 15, 0.95) 100%)'
           : 'transparent'
@@ -241,6 +305,26 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
       </nav>
+      
+      {/* Custom CSS for ticker animation */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        .animate-marquee {
+          animation: marquee 60s linear infinite;
+        }
+        
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </>
   );
 };

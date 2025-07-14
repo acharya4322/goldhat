@@ -29,7 +29,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
       
       <section 
         id="portfolio" 
-        className="py-16 sm:py-20 relative overflow-hidden"
+        className="py-16 sm:py-20 relative overflow-hidden pt-24"
         style={{
           background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1611 50%, #0f0f0f 100%)'
         }}

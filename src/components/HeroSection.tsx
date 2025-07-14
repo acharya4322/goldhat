@@ -75,7 +75,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
       
       <section
         id="home"
-        className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20"
+        className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 sm:pt-24"
         style={{
           background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1611 50%, #0f0f0f 100%)'
         }}
@@ -175,7 +175,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                 fontWeight: '400',
                 color: '#B8B8B8',
                 textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)',
-                fontSize: '1.2'
+                fontSize: '1.0'
               }}
             >
               We Don't Just Transform Your Brand, We turn strategy into unstoppable 
