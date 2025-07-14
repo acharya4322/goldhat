@@ -113,7 +113,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ darkMode = true }) => {
   return (
     <section
       id="contact"
-      className={`py-16 sm:py-20 text-white relative overflow-hidden ${
+      className={`py-16 sm:py-20 text-white relative overflow-hidden pt-24 ${
         darkMode
           ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-black'
           : 'bg-gradient-to-br from-gray-900 via-gray-800 to-black'
