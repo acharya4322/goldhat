@@ -478,7 +478,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                       style={{
                         fontFamily: 'Space Grotesk, sans-serif',
                         fontWeight: '600',
-                        fontSize: '1.5rem',
+                        fontSize: '1.3rem',
                         letterSpacing: '0.02em',
                         borderColor: '#D4AF37',
                         boxShadow: '0 0 10px rgba(212, 175, 55, 0.2)'
@@ -526,7 +526,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
                           color: '#B8860B'
                         }}
                       >
-                        Projectsz
+                        Projects
                       </div>
                     </div>
                     
