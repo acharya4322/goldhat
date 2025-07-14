@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
-  ChevronDown,
-  Sparkles,
-  Zap
+  ChevronDown
 } from 'lucide-react';
 
 type HeroSectionProps = {
@@ -13,63 +11,16 @@ type HeroSectionProps = {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [currentText, setCurrentText] = useState(0);
-  const [particles, setParticles] = useState([]);
-  const [showBottomElements, setShowBottomElements] = useState(false);
-
-  const textRotation = [
-    "Transform",
-    "Elevate", 
-    "Amplify"
-  ];
 
   useEffect(() => {
     setIsVisible(true);
-    
-    const interval = setInterval(() => {
-      setCurrentText(prev => (prev + 1) % textRotation.length);
-    }, 3000);
-
-    // Generate floating particles
-    const generateParticles = () => {
-      const newParticles = [];
-      for (let i = 0; i < 20; i++) {
-        newParticles.push({
-          id: i,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
-          size: Math.random() * 3 + 1,
-          delay: Math.random() * 5,
-          duration: Math.random() * 10 + 10
-        });
-      }
-      setParticles(newParticles);
-    };
-
-    generateParticles();
-
-    // Mobile scroll handler
-    const handleScroll = () => {
-      if (window.innerWidth < 768) { // Only for mobile
-        const scrollThreshold = window.innerHeight * 0.3; // Show after 30% scroll
-        setShowBottomElements(window.scrollY > scrollThreshold);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial state
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   return (
     <>
-      {/* Google Fonts Import */}
+      {/* Google Fonts Import - Modern Tech Fonts */}
       <link 
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" 
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" 
         rel="stylesheet" 
       />
       
@@ -77,540 +28,179 @@ const HeroSection: React.FC<HeroSectionProps> = ({ darkMode, scrollToSection }) 
         id="home"
         className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20"
         style={{
-          background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1611 50%, #0f0f0f 100%)'
+          background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%)'
         }}
       >
-        {/* Animated Background Grid */}
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-30">
+          {/* Floating geometric shapes */}
+          <div className="absolute top-20 left-20 w-32 h-32 sm:w-48 sm:h-48 border border-orange-500/30 rounded-full animate-spin" style={{ animationDuration: '20s' }} />
+          <div className="absolute top-1/3 right-1/4 w-24 h-24 sm:w-36 sm:h-36 border border-orange-400/20 rounded-full animate-pulse" />
+          <div className="absolute bottom-1/4 left-1/3 w-20 h-20 sm:w-28 sm:h-28 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-full blur-sm animate-bounce" style={{ animationDuration: '3s' }} />
+        </div>
+
+        {/* Orange gradient overlay accents */}
         <div className="absolute inset-0 opacity-20">
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: '50px 50px',
-              animation: 'gridMove 20s linear infinite'
-            }}
-          />
+          <div className="absolute top-1/4 left-1/6 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-gradient-to-br from-orange-500 to-red-600 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/3 right-1/5 w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 bg-gradient-to-br from-red-500 to-orange-600 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
         </div>
 
-        {/* Floating Particles */}
-        <div className="absolute inset-0 pointer-events-none">
-          {particles.map((particle) => (
-            <div
-              key={particle.id}
-              className="absolute rounded-full opacity-60"
-              style={{
-                left: `${particle.x}%`,
-                top: `${particle.y}%`,
-                width: `${particle.size}px`,
-                height: `${particle.size}px`,
-                background: 'radial-gradient(circle, #D4AF37, transparent)',
-                animation: `float ${particle.duration}s ease-in-out infinite ${particle.delay}s`
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Desktop Background Elements - Enhanced */}
-        <div className="absolute inset-0 opacity-60 hidden md:block">
-          {/* Larger animated rings with glow */}
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-80 md:h-80 rounded-full border-4 opacity-40"
-               style={{
-                 borderColor: '#D4AF37',
-                 background: 'linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent)',
-                 animation: 'spin 20s linear infinite',
-                 boxShadow: '0 0 100px rgba(212, 175, 55, 0.3)'
-               }}
-          />
-          <div className="absolute top-1/3 right-1/3 w-48 h-48 md:w-64 md:h-64 rounded-full border-2 opacity-30"
-               style={{
-                 borderColor: '#FFD700',
-                 background: 'radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent)',
-                 animation: 'pulse 3s ease-in-out infinite',
-                 boxShadow: '0 0 80px rgba(255, 215, 0, 0.2)'
-               }}
-          />
-          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 md:w-96 md:h-96 rounded-full border-3 opacity-20"
-               style={{
-                 borderColor: '#B8860B',
-                 background: 'conic-gradient(from 0deg, transparent, rgba(184, 134, 11, 0.2), transparent)',
-                 animation: 'spin 15s linear infinite reverse',
-                 boxShadow: '0 0 120px rgba(184, 134, 11, 0.2)'
-               }}
-          />
-        </div>
-
-        {/* Mobile Background Elements - Enhanced */}
-        <div className="absolute inset-0 md:hidden">
-          <div className="absolute top-20 left-0 w-64 h-64 rounded-full opacity-30 blur-3xl"
-               style={{
-                 background: 'radial-gradient(circle, rgba(212, 175, 55, 0.4), transparent)',
-                 animation: 'pulse 4s ease-in-out infinite'
-               }}
-          />
-          <div className="absolute bottom-32 right-0 w-48 h-48 rounded-full opacity-40 blur-2xl"
-               style={{
-                 background: 'radial-gradient(circle, rgba(255, 215, 0, 0.5), transparent)',
-                 animation: 'pulse 3s ease-in-out infinite reverse'
-               }}
-          />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full opacity-20 blur-xl"
-               style={{
-                 background: 'radial-gradient(circle, rgba(184, 134, 11, 0.6), transparent)',
-                 animation: 'pulse 2s ease-in-out infinite'
-               }}
-          />
-        </div>
-
-        {/* Desktop Bottom Left - Enhanced START TRANSFORMATION Button */}
-        <div className="absolute bottom-6 left-6 z-20 hidden md:block">
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="group relative bg-transparent border-2 text-white px-8 py-4 rounded-full transform hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden"
-            style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontWeight: '600',
-              fontSize: '0.9rem',
-              letterSpacing: '0.05em',
-              borderColor: '#D4AF37',
-              boxShadow: '0 0 30px rgba(212, 175, 55, 0.2)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
-              e.currentTarget.style.color = '#0a0a0a';
-              e.currentTarget.style.boxShadow = '0 0 50px rgba(212, 175, 55, 0.5)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.color = '#ffffff';
-              e.currentTarget.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.2)';
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-700" />
-            <div className="flex items-center justify-center space-x-2 relative z-10">
-              <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-              <span>START TRANSFORMATION</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </div>
-          </button>
-        </div>
-
-        {/* Desktop Bottom Right - Enhanced Stats */}
-        <div className="absolute bottom-6 right-6 z-20 hidden md:block">
-          <div className="text-right space-y-6">
-            <div className="text-right group cursor-pointer">
-              <div 
-                className="text-white text-5xl font-black transition-all duration-300 group-hover:scale-110"
-                style={{
-                  fontFamily: 'Orbitron, sans-serif',
-                  fontWeight: '900',
-                  textShadow: '0 0 20px rgba(212, 175, 55, 0.3)'
-                }}
-              >
-                5<span style={{ color: '#D4AF37' }}>+</span>
-              </div>
-              <div 
-                className="text-sm uppercase tracking-wider transition-all duration-300 group-hover:text-yellow-400"
-                style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '400',
-                  letterSpacing: '0.1em',
-                  color: '#B8860B'
-                }}
-              >
-                Projects
-              </div>
-            </div>
-            
-            <div className="text-right group cursor-pointer">
-              <div 
-                className="text-white text-5xl font-black transition-all duration-300 group-hover:scale-110"
-                style={{
-                  fontFamily: 'Orbitron, sans-serif',
-                  fontWeight: '900',
-                  textShadow: '0 0 20px rgba(212, 175, 55, 0.3)'
-                }}
-              >
-                100<span style={{ color: '#D4AF37' }}>%</span>
-              </div>
-              <div 
-                className="text-sm uppercase tracking-wider transition-all duration-300 group-hover:text-yellow-400"
-                style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '400',
-                  letterSpacing: '0.1em',
-                  color: '#B8860B'
-                }}
-              >
-                Satisfaction
-              </div>
-            </div>
-            
-            <div className="text-right group cursor-pointer">
-              <div 
-                className="text-white text-5xl font-black transition-all duration-300 group-hover:scale-110"
-                style={{
-                  fontFamily: 'Orbitron, sans-serif',
-                  fontWeight: '900',
-                  textShadow: '0 0 20px rgba(212, 175, 55, 0.3)'
-                }}
-              >
-                2025
-              </div>
-              <div 
-                className="text-sm uppercase tracking-wider transition-all duration-300 group-hover:text-yellow-400"
-                style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '400',
-                  letterSpacing: '0.1em',
-                  color: '#B8860B'
-                }}
-              >
-                Founded
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Main Content Container */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 text-center">
           <div 
             className={`transition-all duration-1000 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            {/* Desktop Layout */}
-            <div className="hidden md:block text-center">
-              {/* Main Headline with Desktop Typography */}
-              <h1 className="text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-6 sm:mb-8 leading-tight">
-                <span 
-                  className="block text-white tracking-tight font-black"
-                  style={{ 
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: '900',
-                    letterSpacing: '-0.02em',
-                    textShadow: '0 0 40px rgba(255, 255, 255, 0.1)'
-                  }}
-                >
-                  We Don't Just
-                </span>
-                
-                {/* Enhanced rotating word with better effects */}
-                <div className="relative inline-block my-8">
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg blur-xl opacity-30 animate-pulse" />
-                  <span 
-                    className="block text-black font-black tracking-tight px-8 py-4 transform -rotate-2 relative z-10 transition-all duration-500 hover:scale-105 hover:rotate-1"
-                    style={{ 
-                      fontFamily: 'Inter, sans-serif',
-                      fontWeight: '900',
-                      letterSpacing: '-0.02em',
-                      background: 'linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%)',
-                      boxShadow: '0 8px 32px rgba(212, 175, 55, 0.4), 0 0 60px rgba(255, 215, 0, 0.3)',
-                      textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
-                    }}
-                  >
-                    {textRotation[currentText]}
-                  </span>
-                  <div className="absolute -top-2 -right-2 text-yellow-400 animate-bounce">
-                    <Zap className="w-6 h-6" />
-                  </div>
-                </div>
-                
-                <span 
-                  className="block text-white tracking-tight font-black"
-                  style={{ 
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: '900',
-                    letterSpacing: '-0.02em',
-                    textShadow: '0 0 40px rgba(255, 255, 255, 0.1)'
-                  }}
-                >
-                  Your Brand
-                </span>
-              </h1>
-
-              {/* Enhanced Desktop subtitle */}
-              <p 
-                className="text-xl lg:text-2xl mb-16 max-w-3xl mx-auto leading-relaxed"
-                style={{
+            {/* Main Headline with Modern Tech Typography */}
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-6 sm:mb-8 leading-tight text-center">
+              <span 
+                className="block text-gray-100 tracking-tight"
+                style={{ 
                   fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: '400',
-                  color: '#B8B8B8',
-                  textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
+                  fontWeight: '700',
+                  letterSpacing: '-0.02em',
+                  textShadow: '0 0 20px rgba(255,255,255,0.1)'
                 }}
               >
-                We turn strategy into unstoppable 
-                <span 
-                  className="font-semibold ml-2 relative"
-                  style={{ 
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontWeight: '600',
-                    color: '#D4AF37',
-                    textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                  }}
-                > 
-                  growth.
-                  <div className="absolute -top-1 -right-1 text-yellow-400 animate-pulse">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                </span>
-              </p>
-
-              {/* Enhanced Desktop scroll indicator */}
-              <div 
-                className="cursor-pointer group inline-block relative" 
-                onClick={() => scrollToSection('about')}
+                DESIGN
+              </span>
+              <span 
+                className="block text-gray-100 tracking-tight"
+                style={{ 
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontWeight: '700',
+                  letterSpacing: '-0.02em',
+                  textShadow: '0 0 20px rgba(255,255,255,0.1)'
+                }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-lg opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
-                <div className="relative bg-black/20 backdrop-blur-sm rounded-full p-2 border border-yellow-400/30 group-hover:border-yellow-400/60 transition-all duration-300">
-                  <ChevronDown 
-                    className="w-8 h-8 transition-all duration-300 group-hover:scale-125 animate-bounce"
-                    style={{ 
-                      color: '#B8860B',
-                      filter: 'drop-shadow(0 0 8px rgba(212, 175, 55, 0.5))'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#D4AF37';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = '#B8860B';
-                    }}
-                  />
+                DEVELOP
+              </span>
+              <span 
+                className="block bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 bg-clip-text text-transparent transform hover:scale-105 transition-transform duration-500 relative"
+                style={{ 
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontWeight: '700',
+                  letterSpacing: '-0.02em',
+                  textShadow: '0 0 30px rgba(249, 115, 22, 0.5)',
+                  filter: 'drop-shadow(0 0 10px rgba(249, 115, 22, 0.3))'
+                }}
+              >
+                DEPLOY
+                {/* Orange accent box like in reference */}
+                <div className="absolute -right-4 sm:-right-8 md:-right-16 top-1/2 -translate-y-1/2 w-16 h-8 sm:w-24 sm:h-12 md:w-32 md:h-16 bg-gradient-to-r from-orange-500 to-red-600 transform rotate-12 opacity-90" />
+              </span>
+            </h1>
+
+            {/* Modern tech subtitle */}
+            <p 
+              className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto leading-relaxed px-2 sm:px-0 text-gray-300"
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontWeight: '400',
+                letterSpacing: '0.01em'
+              }}
+            >
+              No fluff, no jargon, just clean, elegant code and designs that pop.
+              <br className="hidden sm:block" />
+              Get your own 
+              <span 
+                className="text-orange-500 ml-1 sm:ml-2 font-semibold"
+                style={{ 
+                  fontFamily: 'Inter, sans-serif',
+                  fontWeight: '600'
+                }}
+              > 
+                custom digital solution
+              </span>
+              <span className="text-gray-300"> right now !</span>
+            </p>
+
+            {/* Modern CTA button */}
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="group bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-4 sm:px-8 sm:py-5 md:px-10 md:py-5 rounded-lg transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 border border-orange-400/30 relative overflow-hidden w-full sm:w-auto max-w-sm sm:max-w-none mx-auto"
+                style={{
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontWeight: '600',
+                  fontSize: 'clamp(0.875rem, 2.5vw, 1.125rem)',
+                  letterSpacing: '0.02em',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                  boxShadow: '0 10px 30px -8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(249, 115, 22, 0.2)'
+                }}
+              >
+                {/* Animated background effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                <div className="flex items-center justify-center space-x-2 sm:space-x-3 relative z-10">
+                  <span>BOOK A CALL</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </button>
+            </div>
+
+            {/* Modern stats with tech styling */}
+            <div className="grid grid-cols-2 gap-6 sm:gap-8 md:gap-12 mb-12 sm:mb-16 max-w-xs sm:max-w-lg md:max-w-xl mx-auto">
+              <div className="text-center group cursor-default">
+                <div 
+                  className="text-3xl sm:text-4xl md:text-5xl text-white mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300"
+                  style={{
+                    fontFamily: 'JetBrains Mono, monospace',
+                    fontWeight: '700',
+                    textShadow: '0 0 20px rgba(249, 115, 22, 0.4)'
+                  }}
+                >
+                  22+
+                </div>
+                <div 
+                  className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider"
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: '500',
+                    letterSpacing: '0.1em'
+                  }}
+                >
+                  IDEAS SHIPPED
+                </div>
+              </div>
+              <div className="text-center group cursor-default">
+                <div 
+                  className="text-3xl sm:text-4xl md:text-5xl text-white mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300"
+                  style={{
+                    fontFamily: 'JetBrains Mono, monospace',
+                    fontWeight: '700',
+                    textShadow: '0 0 20px rgba(249, 115, 22, 0.4)'
+                  }}
+                >
+                  48+
+                </div>
+                <div 
+                  className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider"
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: '500',
+                    letterSpacing: '0.1em'
+                  }}
+                >
+                  DESIGNS SHIPPED
                 </div>
               </div>
             </div>
 
-            {/* Mobile Layout - Fixed to center vertically */}
-            <div className="md:hidden text-center px-4 flex flex-col justify-center items-center h-screen">
-              {/* Main Content Section - Centered */}
-              <div className="flex flex-col justify-center items-center -mt-40">
-                <div className="space-y-3">
-                  <h1 className="text-4xl sm:text-5xl leading-none font-black tracking-tight">
-                    <span 
-                      className="block text-white mb-2"
-                      style={{ 
-                        fontFamily: 'Inter, sans-serif',
-                        fontWeight: '900',
-                        letterSpacing: '-0.03em',
-                        textShadow: '0 0 30px rgba(255, 255, 255, 0.1)',
-                        fontSize: '3.5rem',
-                      }}
-                    >
-                      WE DON'T JUST
-                    </span>
-                    
-                    {/* Enhanced mobile word */}
-                    <div className="relative inline-block transform -rotate-2 mb-2">
-                      <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg blur-xl opacity-30 animate-pulse" />
-                      <span 
-                        className="block text-black font-black tracking-tight px-4 py-2 relative z-10"
-                        style={{ 
-                          fontFamily: 'Inter, sans-serif',
-                          fontWeight: '900',
-                          letterSpacing: '-0.03em',
-                          background: 'linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%)',
-                          boxShadow: '0 8px 32px rgba(212, 175, 55, 0.4), 0 0 40px rgba(255, 215, 0, 0.3)',
-                          fontSize: '3.6rem',
-                          textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
-                        }}
-                      >
-                        {textRotation[currentText]}
-                      </span>
-                    </div>
-                    
-                    <span 
-                      className="block text-white"
-                      style={{ 
-                        fontFamily: 'Inter, sans-serif',
-                        fontWeight: '900',
-                        letterSpacing: '-0.03em',
-                        textShadow: '0 0 30px rgba(255, 255, 255, 0.1)',
-                        fontSize: '3.5rem',
-                      }}
-                    >
-                      YOUR BRAND
-                    </span>
-                  </h1>
-
-                  {/* Modified Mobile subtitle - Much smaller font */}
-                  <p 
-                    className="text-xs leading-tight max-w-xs mx-auto opacity-90 text-center mt-6"
-                    style={{
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      fontWeight: '400',
-                      color: '#B8B8B8',
-                      textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
-                    }}
-                  >
-                    We turn strategy into unstoppable{' '}
-                    <span 
-                      className="font-semibold relative"
-                      style={{ 
-                        fontFamily: 'Space Grotesk, sans-serif',
-                        fontWeight: '600',
-                        color: '#D4AF37',
-                        textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                      }}
-                    >
-                      growth.
-                      <div className="absolute -top-1 -right-1 text-yellow-400 animate-pulse">
-                        <Sparkles className="w-2 h-2" />
-                      </div>
-                    </span>
-                  </p>
-                </div>
-              </div>
-
-              {/* Bottom Elements Section - Show on Scroll */}
-              <div 
-                className={`fixed bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent pb-6 pt-12 z-30 transition-all duration-500 ${
-                  showBottomElements ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-                }`}
-              >
-                <div className="space-y-6">
-                  {/* Mobile START TRANSFORMATION Button - Half Size */}
-                  <div className="flex justify-center">
-                    <button
-                      onClick={() => scrollToSection('contact')}
-                      className="group relative bg-transparent border-2 text-white px-2 py-1 rounded-full transform active:scale-95 transition-all duration-300 overflow-hidden"
-                      style={{
-                        fontFamily: 'Space Grotesk, sans-serif',
-                        fontWeight: '600',
-                        fontSize: '1.0rem',
-                        letterSpacing: '0.02em',
-                        borderColor: '#D4AF37',
-                        boxShadow: '0 0 10px rgba(212, 175, 55, 0.2)'
-                      }}
-                      onTouchStart={(e) => {
-                        e.currentTarget.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
-                        e.currentTarget.style.color = '#0a0a0a';
-                        e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.5)';
-                      }}
-                      onTouchEnd={(e) => {
-                        setTimeout(() => {
-                          e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.color = '#ffffff';
-                          e.currentTarget.style.boxShadow = '0 0 10px rgba(212, 175, 55, 0.2)';
-                        }, 100);
-                      }}
-                    >
-                      <div className="flex items-center justify-center space-x-1 relative z-10">
-                        <Sparkles className="w-2.5 h-2.5" />
-                        <span>START TRANSFORMATION</span>
-                        <ArrowRight className="w-2.5 h-2.5" />
-                      </div>
-                    </button>
-                  </div>
-
-                  {/* Mobile Stats - Horizontal Layout */}
-                  <div className="flex justify-center space-x-8 text-center">
-                    <div className="text-center group cursor-pointer">
-                      <div 
-                        className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
-                        style={{
-                          fontFamily: 'Orbitron, sans-serif',
-                          fontWeight: '900',
-                          textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                        }}
-                      >
-                        5<span style={{ color: '#D4AF37' }}>+</span>
-                      </div>
-                      <div 
-                        className="text-xs uppercase tracking-wider leading-tight"
-                        style={{
-                          fontFamily: 'Space Grotesk, sans-serif',
-                          fontWeight: '400',
-                          letterSpacing: '0.05em',
-                          color: '#B8860B'
-                        }}
-                      >
-                        Projects
-                      </div>
-                    </div>
-                    
-                    <div className="text-center group cursor-pointer">
-                      <div 
-                        className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
-                        style={{
-                          fontFamily: 'Orbitron, sans-serif',
-                          fontWeight: '900',
-                          textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                        }}
-                      >
-                        100<span style={{ color: '#D4AF37' }}>%</span>
-                      </div>
-                      <div 
-                        className="text-xs uppercase tracking-wider leading-tight"
-                        style={{
-                          fontFamily: 'Space Grotesk, sans-serif',
-                          fontWeight: '400',
-                          letterSpacing: '0.05em',
-                          color: '#B8860B'
-                        }}
-                      >
-                        Satisfaction
-                      </div>
-                    </div>
-                    
-                    <div className="text-center group cursor-pointer">
-                      <div 
-                        className="text-white text-lg font-black transition-all duration-300 group-active:scale-110 leading-tight"
-                        style={{
-                          fontFamily: 'Orbitron, sans-serif',
-                          fontWeight: '900',
-                          textShadow: '0 0 15px rgba(212, 175, 55, 0.3)'
-                        }}
-                      >
-                        2025
-                      </div>
-                      <div 
-                        className="text-xs uppercase tracking-wider leading-tight"
-                        style={{
-                          fontFamily: 'Space Grotesk, sans-serif',
-                          fontWeight: '400',
-                          letterSpacing: '0.05em',
-                          color: '#B8860B'
-                        }}
-                      >
-                        Founded
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Mobile Scroll Arrow - REMOVED */}
-                </div>
-              </div>
+            {/* Enhanced scroll indicator */}
+            <div 
+              className="cursor-pointer group inline-block" 
+              onClick={() => scrollToSection('about')}
+            >
+              <ChevronDown 
+                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 transition-all duration-300 group-hover:scale-125 animate-bounce text-orange-500"
+                style={{
+                  filter: 'drop-shadow(0 0 10px rgba(249, 115, 22, 0.6))'
+                }}
+              />
             </div>
           </div>
         </div>
-
-        {/* Enhanced Custom CSS for animations */}
-        <style jsx>{`
-          @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          
-          @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-          }
-          
-          @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-          }
-          
-          .animate-spin-slow {
-            animation: spin-slow 20s linear infinite;
-          }
-          
-          .animate-float {
-            animation: float 6s ease-in-out infinite;
-          }
-        `}</style>
       </section>
     </>
   );
