@@ -24,24 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({
   const navItemClass = `text-gray-300 hover:text-white transition-all duration-300 font-medium px-3 lg:px-4 py-2 rounded-xl relative group`;
 
   const tickerMessages = [
-    "BRAND TRANSFORMATION",
-    "DIGITAL MARKETING",
-    "WEB DEVELOPMENT",
-    "MOBILE APPS",
-    "META ADS",
-    "GOOGLE ADS",
-    "SEO OPTIMIZATION",
-    "LEAD GENERATION",
-    "SOCIAL MEDIA",
-    "GRAPHIC DESIGN",
-    "APP DEVELOPMENT",
-    "GROWTH HACKING",
-    "CONTENT STRATEGY",
-    "CONVERSION OPTIMIZATION",
-    "BRAND IDENTITY",
-    "PERFORMANCE MARKETING",
-    "THINK GOLD. ACT BOLD.",
-    "SCALING SUCCESS"
+    "BRAND TRANSFORMATION • DIGITAL MARKETING • WEB DEVELOPMENT • MOBILE APPS • META ADS • GOOGLE ADS • SEO OPTIMIZATION • LEAD GENERATION • SOCIAL MEDIA • GRAPHIC DESIGN • APP DEVELOPMENT • GROWTH HACKING • CONTENT STRATEGY • CONVERSION OPTIMIZATION • BRAND IDENTITY • PERFORMANCE MARKETING • THINK GOLD. ACT BOLD. • SCALING SUCCESS"
   ];
   return (
     <>
@@ -65,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({
               {tickerMessages.map((message, index) => (
                 <span
                   key={`first-${index}`}
-                  className="inline-block px-8 py-1 text-black font-medium text-sm"
+                  className="inline-block text-black font-medium text-sm"
                   style={{
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontWeight: '500',
@@ -79,7 +62,7 @@ const Navbar: React.FC<NavbarProps> = ({
               {tickerMessages.map((message, index) => (
                 <span
                   key={`second-${index}`}
-                  className="inline-block px-8 py-1 text-black font-medium text-sm"
+                  className="inline-block px-8 text-black font-medium text-sm"
                   style={{
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontWeight: '500',
