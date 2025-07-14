@@ -24,24 +24,24 @@ const Navbar: React.FC<NavbarProps> = ({
   const navItemClass = `text-gray-300 hover:text-white transition-all duration-300 font-medium px-3 lg:px-4 py-2 rounded-xl relative group`;
 
   const tickerMessages = [
-    "🚀 BRAND TRANSFORMATION",
-    "✨ DIGITAL MARKETING",
-    "🏆 WEB DEVELOPMENT",
-    "💎 MOBILE APPS",
-    "🔥 META ADS",
-    "⚡ GOOGLE ADS",
-    "🎯 SEO OPTIMIZATION",
-    "💰 LEAD GENERATION",
-    "🌟 SOCIAL MEDIA",
-    "🎨 GRAPHIC DESIGN",
-    "📱 APP DEVELOPMENT",
-    "🚀 GROWTH HACKING",
-    "✨ CONTENT STRATEGY",
-    "🏆 CONVERSION OPTIMIZATION",
-    "💎 BRAND IDENTITY",
-    "🔥 PERFORMANCE MARKETING",
-    "⚡ THINK GOLD. ACT BOLD.",
-    "🎯 SCALING SUCCESS"
+    "BRAND TRANSFORMATION",
+    "DIGITAL MARKETING",
+    "WEB DEVELOPMENT",
+    "MOBILE APPS",
+    "META ADS",
+    "GOOGLE ADS",
+    "SEO OPTIMIZATION",
+    "LEAD GENERATION",
+    "SOCIAL MEDIA",
+    "GRAPHIC DESIGN",
+    "APP DEVELOPMENT",
+    "GROWTH HACKING",
+    "CONTENT STRATEGY",
+    "CONVERSION OPTIMIZATION",
+    "BRAND IDENTITY",
+    "PERFORMANCE MARKETING",
+    "THINK GOLD. ACT BOLD.",
+    "SCALING SUCCESS"
   ];
   return (
     <>
@@ -58,17 +58,6 @@ const Navbar: React.FC<NavbarProps> = ({
              height: '32px'
            }}>
         <div className="flex items-center h-full">
-          {/* Breaking News Label */}
-          <div className="flex-shrink-0 px-4 py-1 text-black font-bold text-xs uppercase tracking-wider border-r-2 border-black/20"
-               style={{
-                 fontFamily: 'Space Grotesk, sans-serif',
-                 fontWeight: '700',
-                 background: 'rgba(0, 0, 0, 0.1)',
-                 textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
-               }}>
-            🔥 GOLDHAT NEWS
-          </div>
-          
           {/* Moving Text Container */}
           <div className="flex-1 overflow-hidden relative">
             <div className="flex animate-marquee whitespace-nowrap">
@@ -329,7 +318,7 @@ const Navbar: React.FC<NavbarProps> = ({
         }
         
         .animate-marquee {
-          animation: marquee 60s linear infinite;
+          animation: marquee 35s linear infinite;
         }
         
         .animate-marquee:hover {
